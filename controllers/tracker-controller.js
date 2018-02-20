@@ -16,6 +16,19 @@ trackerController.tracker = (req,res) => {
   });
 };
 
+trackerController.single = (req,res) => {
+  Currency.findById(req.params.id)
+  .then(currency => {
+    res.json({
+      message: 'single currency',
+      currency: currency
+    });
+  })
+  .catch(err => {
+    console.log('single currency error', err);
+  });
+};
+
 trackerController.update = (req,res) => {
   Currency.update({
     id: req.body.id,

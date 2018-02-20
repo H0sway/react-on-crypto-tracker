@@ -1,3 +1,4 @@
+// This controller handles the call to the Coin Market Cap API
 const axios = require('axios');
 
 const cmcController = {};
