@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 // Import components
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Home from './components/Home';
 
 export default class App extends Component {
   render() {
@@ -11,7 +12,9 @@ export default class App extends Component {
       <Router>
         <div className="App">
           <Header />
-          <h1>Hi Mom!</h1>
+
+           <Route exact path="/" component={Home} />
+
           <Footer />
         </div>
       </Router>
