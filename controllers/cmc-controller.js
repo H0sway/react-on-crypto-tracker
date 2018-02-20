@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const cmcController = {};
 
-controller.top = (req,res) => {
+cmcController.top = (req,res) => {
   axios({
     method: 'GET',
     url: 'https://api.coinmarketcap.com/v1/ticker/?limit=50'
@@ -19,7 +19,7 @@ controller.top = (req,res) => {
   });
 };
 
-controller.tracker = (req,res) => {
+cmcController.tracker = (req,res) => {
   axios({
     method: 'GET',
     url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`

@@ -1,4 +1,4 @@
-const Currency = require('models/currency');
+const Currency = require('../models/currency');
 const axios = require('axios');
 
 const trackerController = {};

@@ -4,6 +4,6 @@ const cmcRouter = express.Router();
 const cmcController = require('../controllers/cmc-controller');
 
 cmcRouter.post('/', cmcController.top);
-cmcRouter.post('/', cmcController.tracker);
+cmcRouter.post('/:currency_id', cmcController.tracker);
 
 module.exports = cmcRouter;
