@@ -27,9 +27,12 @@ controller.tracker = (req,res) => {
     res.json({
       message: 'Single crypto data loaded',
       data: crypto.data
-    })
+    });
   })
   .catch(err => {
     console.log('Single CMC call error', err);
   });
 };
+
+
+module.exports = cmcController;
