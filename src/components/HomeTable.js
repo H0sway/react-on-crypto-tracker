@@ -23,7 +23,7 @@ class HomeTable extends Component {
   }
   render() {
     return (
-      <Table bordered hover condensed>
+      <Table bordered condensed bsClass="table">
         <thead>
           <tr>
             <th>Rank</th>

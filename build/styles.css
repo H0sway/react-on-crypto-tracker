@@ -20,3 +20,26 @@ footer {
 .Home {
   padding: 2em;
 }
+
+.table {
+  background: #000000;
+  color: #4dffff;
+  border: 3px solid #4dffff;
+  background-color: #000000;
+  border-collapse: collapse;
+}
+
+.table th {
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.table td {
+  text-align: center;
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.table th:hover {
+  background-color: #4d4d4d;
+}
