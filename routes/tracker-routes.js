@@ -10,4 +10,4 @@ trackerRouter.get('/:id', trackerController.single);
 trackerRouter.post('/:id', trackerController.update);
 trackerRouter.delete('/:id', trackerController.delete);
 
-module.exports trackerRouter;
+module.exports = trackerRouter;
