@@ -1,10 +1,14 @@
 body {
   margin: 0 auto;
   text-align: center;
+  background-color: #000000;
+  color: #4dffff;
 }
 
 footer {
   border-top: 1px solid #000000;
+  background: #000000;
+  color: #4dffff;
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -12,3 +16,30 @@ footer {
   width: 100%;
   padding: .5em 0 2em 0;
 }
+
+.Home {
+  padding: 2em;
+}
+
+/*.table {
+  background: #000000;
+  color: #4dffff;
+  border: 3px solid #4dffff;
+  background-color: #000000;
+  border-collapse: collapse;
+}
+
+.table th {
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.table td {
+  text-align: center;
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.table th:hover {
+  background-color: #4d4d4d;
+}*/

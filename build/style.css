@@ -1,0 +1,15 @@
+footer {
+  border-top: 1px solid #000000;
+  background: #000000;
+  color: #4dffff;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  max-height: 30px;
+  width: 100%;
+  padding: .5em 0 2em 0;
+}
+
+.Home {
+  padding: 2em;
+}
