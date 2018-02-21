@@ -24,4 +24,4 @@ All the features planned for the app along with their priority, estimated, and c
 | Complementary phone app in React Native         | L        | 40H            |             |
 | Users can track the change in their investments | M        | 5H             |             |
 
-### [Component Hierarchy](https://imgur.com/1Wda9d7 "I don't think anybody reads these") 
+### [Component Hierarchy](https://imgur.com/nToAFQZ "I don't think anybody reads these") 
