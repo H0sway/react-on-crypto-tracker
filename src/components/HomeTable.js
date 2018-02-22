@@ -7,14 +7,17 @@ class HomeTable extends Component {
   }
   renderTableBody() {
     return this.props.currencies.map(currency => {
+      const priceUsd = currency.price_usd;
+      const priceBtc = currency.price_btc;
+      const marketCap = currency.market_cap_usd;
       return (
         <tbody key={currency.rank}>
           <tr>
             <th>#{currency.rank}</th>
             <th>{currency.name}</th>
-            <th>${currency.price_usd}</th>
-            <th>{currency.price_btc}</th>
-            <th>{currency.market_cap_usd}</th>
+            <th>${priceUsd}</th>
+            <th>{priceBtc}</th>
+            <th>{marketCap}</th>
             <th>{currency.percent_change_7d}%</th>
           </tr>
         </tbody>
