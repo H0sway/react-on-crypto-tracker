@@ -8,7 +8,7 @@ class HomeTable extends Component {
   renderTableBody() {
     return this.props.currencies.map(currency => {
       const priceUsd = parseFloat(currency.price_usd).toFixed(2);
-      const priceBtc = parseFloat(currency.price_btc).toFixed(2);
+      const priceBtc = parseFloat(currency.price_btc).toFixed(8);
       const marketCap = parseFloat(currency.market_cap_usd).toFixed(0);
       return (
         <tbody key={currency.rank}>
