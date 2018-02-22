@@ -8,6 +8,7 @@ import { requireAuth } from './utils/AuthService';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Tracker from './components/Tracker';
 import Callback from './components/Callback';
 
 export default class App extends Component {
