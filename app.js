@@ -27,13 +27,13 @@ const authCheck = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: "https://reactcryptotracker.auth0.com/.well-known/jwks.json",
   }),
-  audience: 'https://reactcryptotracker.auth0.com/api/v2/',
+  audience: 'https://react-crypto-tracker.com',
   issuer: 'https://reactcryptotracker.auth0.com',
   algorithm: ['RS256'],
 })
 
 // API Routes
-app.use('/api/tracker', require('./routes/tracker-routes'));
+app.use('/api/tracker', authCheck, require('./routes/tracker-routes'));
 app.use('/api/currencydata', require('./routes/cmc-routes'));
 
 app.listen(PORT, () => {
