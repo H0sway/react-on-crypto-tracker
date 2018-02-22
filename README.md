@@ -14,8 +14,10 @@ All the features planned for the app along with their priority, estimated, and c
 |------------------------------------------------------|----------|----------------|-------------|
 | Table with top X Cryptos                             | H        | 1H             |             |
 | Implement Auth                                       | H        | 10H            | 1.5H        |
-| Users can add, track, and edit their own investments | H        | 15H            | 4H          |
+| CRUD Functionality for tracker/investments           | H        | 15H            | 1H          |
 | Responsive design using Bootstrap                    | M        | 8H             | 3H          |
+| Whiteboarding                                        | M        | 3H             | 3H          |
+| Have all components render                           | H        | 10H            | 4H          |
 
 ### Post MVP
 
