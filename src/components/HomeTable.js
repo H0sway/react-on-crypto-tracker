@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Glyphicon } from 'react-bootstrap';
 
 class HomeTable extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class HomeTable extends Component {
             <th>#{currency.rank}</th>
             <th>{currency.name}</th>
             <th>${priceUsd}</th>
-            <th>{priceBtc}</th>
-            <th>{marketCap}</th>
+            <th><Glyphicon glyph="bitcoin" />{priceBtc}</th>
+            <th>${marketCap}</th>
             <th>{currency.percent_change_7d}%</th>
           </tr>
         </tbody>
