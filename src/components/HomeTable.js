@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Table, Glyphicon } from 'react-bootstrap';
 
-class HomeTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-  renderTableBody() {
-    return this.props.currencies.map(currency => {
+const HomeTable = (props) => {
+  const renderTableBody =
+    props.currencies.map(currency => {
       const priceUsd = parseFloat(currency.price_usd).toFixed(2);
       const priceBtc = parseFloat(currency.price_btc).toFixed(8);
       const marketCap = parseFloat(currency.market_cap_usd).toFixed(0);
@@ -23,8 +20,6 @@ class HomeTable extends Component {
         </tbody>
         )
     })
-  }
-  render() {
     return (
       <Table bordered condensed hover responsive >
         <thead>
@@ -37,10 +32,9 @@ class HomeTable extends Component {
             <th>Percent Change (7 Days)</th>
           </tr>
         </thead>
-        {this.renderTableBody()}
+        {renderTableBody}
       </Table>
       )
   }
-}
 
 export default HomeTable

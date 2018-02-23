@@ -17,9 +17,6 @@ app.use(cors());
 
 app.use(express.static('build'));
 
-app.get('/*', (req,res) => {
-  res.sendFile(path.join(__dirname + '/index.html'))
-});
 
 // Auth0 Stuff
 const checkJwt = jwt({
@@ -40,6 +37,9 @@ const checkScopes = jwtAuthz([ 'read:currencies', 'create:currency', 'update:cur
 // API Routes
 app.use('/api/tracker', checkJwt, checkScopes, require('./routes/tracker-routes'));
 app.use('/api/currencydata', require('./routes/cmc-routes'));
+app.get('/*', (req,res) => {
+  res.sendFile(path.join(__dirname + '/index.html'))
+});
 
 app.listen(PORT, () => {
   console.log(`Live on port ${PORT} but also it's the Shrek movie`);

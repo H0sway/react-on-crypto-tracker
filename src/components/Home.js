@@ -23,13 +23,13 @@ export default class Home extends Component {
       });
     })
     .catch(err => {
-      console.log('component did mount error');
+      console.log('component did mount error', err);
     })
   }
   render() {
     return (
       <div className="Home">
-        <HomeTable currencies ={this.state.currencies} {...props} />
+        {this.state.dataLoaded ? <HomeTable currencies={this.state.currencies} /> : <p>Loading... This might take a while</p> }
       </div>
     );
   }

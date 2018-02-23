@@ -49,14 +49,6 @@ class App extends Component {
               <Button
                 bsStyle="primary"
                 className="btn-margin"
-                onClick={this.renewToken.bind(this)}
-              >
-                Renew Token
-              </Button>}
-            {isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
                 onClick={this.logout.bind(this)}
               >
                 Log Out
