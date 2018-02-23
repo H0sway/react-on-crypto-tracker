@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends Component {
   goTo(route) {
@@ -24,17 +25,18 @@ class App extends Component {
     return (
       <div>
         <Navbar fluid>
-          <Navbar.Header>
+          <Navbar.Header sm={12} md={8}>
             <Navbar.Brand>
-              <a onClick={this.goTo.bind(this, 'home')}>Auth0 - React</a>
+              The L33t H4ck3r'5 CryptoCurrency Tracker
             </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
+          </Navbar.Header>
+          <Nav sm={8} md={4}>
+            <LinkContainer to="/home">
+              <NavItem>Top 50</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/tracker">
+              <NavItem>My Tracker</NavItem>
+            </LinkContainer>
             {!isAuthenticated() &&
               <Button
                 bsStyle="primary"
@@ -42,14 +44,6 @@ class App extends Component {
                 onClick={this.login.bind(this)}
               >
                 Log In
-              </Button>}
-            {isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.goTo.bind(this, 'profile')}
-              >
-                Profile
               </Button>}
             {isAuthenticated() &&
               <Button
@@ -67,7 +61,7 @@ class App extends Component {
               >
                 Log Out
               </Button>}
-          </Navbar.Header>
+          </Nav>
         </Navbar>
       </div>
     );
