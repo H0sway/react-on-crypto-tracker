@@ -22,7 +22,7 @@ cmcController.top = (req,res) => {
 cmcController.tracker = (req,res) => {
   axios({
     method: 'GET',
-    url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
+    url: `https://api.coinmarketcap.com/v1/ticker/${currency_id}`
   })
   .then(crypto => {
     res.json({
