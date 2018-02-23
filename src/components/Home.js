@@ -20,7 +20,7 @@ export default class Home extends Component {
       this.setState({
         dataLoaded: true,
         currencies: currencies.data.data,
-       });
+      });
     })
     .catch(err => {
       console.log('component did mount error');
@@ -29,7 +29,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <HomeTable currencies ={this.state.currencies} />
+        <HomeTable currencies ={this.state.currencies} {...props} />
       </div>
     );
   }
