@@ -5,8 +5,10 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
+const jwtAuthz = require('express-jwt-authz');
+const jwksRsa = require('jwks-rsa');
 const cors =  require('cors');
+require('dotenv').config();
 
 // Import Middleware
 app.use(bodyParser.json());
@@ -15,25 +17,28 @@ app.use(cors());
 
 app.use(express.static('build'));
 
-app.get('/', (req,res) => {
+app.get('/*', (req,res) => {
   res.sendFile(path.join(__dirname + '/index.html'))
 });
 
 // Auth0 Stuff
-const authCheck = jwt({
-  secret: jwks.expressJwtSecret({
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: "https://reactcryptotracker.auth0.com/.well-known/jwks.json",
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
   }),
-  audience: 'https://react-crypto-tracker.com',
-  issuer: 'https://reactcryptotracker.auth0.com',
-  algorithm: ['RS256'],
-})
+
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+  algorithms: ['RS256']
+});
+
+const checkScopes = jwtAuthz([ 'read:currencies', 'create:currency', 'update:currency', 'delete:currency' ]);
 
 // API Routes
-app.use('/api/tracker', authCheck, require('./routes/tracker-routes'));
+app.use('/api/tracker', checkJwt, checkScopes, require('./routes/tracker-routes'));
 app.use('/api/currencydata', require('./routes/cmc-routes'));
 
 app.listen(PORT, () => {

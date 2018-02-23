@@ -1,30 +1,63 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, browserHistory} from 'react-router-dom';
+import { Navbar, Button } from 'react-bootstrap';
 
-// Require auth for the /tracker route
-import { requireAuth } from './utils/AuthService';
+class App extends Component {
+  goTo(route) {
+    this.props.history.replace(`/${route}`)
+  }
 
-// Import components
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Tracker from './components/Tracker';
-import Callback from './components/Callback';
+  login() {
+    this.props.auth.login();
+  }
 
-export default class App extends Component {
+  logout() {
+    this.props.auth.logout();
+  }
+
   render() {
+    const { isAuthenticated } = this.props.auth;
+
     return (
-      <Router history={browserHistory}>
-        <div className="App">
-          <Header />
-
-          <Route exact path="/" component={Home} />
-          <Route exact path="/tracker" component={Tracker} onEnter={requireAuth} />
-          <Route exact path="/callback" component={Callback} />
-
-          <Footer />
-        </div>
-      </Router>
+      <div>
+        <Navbar fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Auth0 - React</a>
+            </Navbar.Brand>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'home')}
+            >
+              Home
+            </Button>
+            {
+              !isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                <Button
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.logout.bind(this)}
+                >
+                  Log Out
+                </Button>
+              )
+            }
+          </Navbar.Header>
+        </Navbar>
+      </div>
     );
   }
 }
+
+export default App;
