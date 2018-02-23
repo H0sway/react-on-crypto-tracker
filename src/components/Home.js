@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-class Home extends Component {
-  login() {
-    this.props.auth.login();
+import HomeTable from './HomeTable';
+
+export default class Home extends Component {
+  constructor() {
+    super()
+    this.state = {
+      dataLoaded: false,
+      currencies: [],
+    }
+   }
+  componentDidMount() {
+    axios({
+      method: 'GET',
+      url: '/api/currencydata',
+    })
+    .then(currencies => {
+      this.setState({
+        dataLoaded: true,
+        currencies: currencies.data.data,
+       });
+    })
+    .catch(err => {
+      console.log('component did mount error');
+    })
   }
   render() {
-    const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
-        {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
-        }
+      <div className="Home">
+        <HomeTable currencies ={this.state.currencies} />
       </div>
     );
   }
 }
-
-export default Home;
