@@ -17,7 +17,7 @@ All the features planned for the app along with their priority, estimated, and c
 | CRUD Functionality for tracker/investments           | H        | 15H            | 2H          |
 | Responsive design using Bootstrap                    | M        | 8H             | 3H          |
 | Whiteboarding                                        | M        | 3H             | 3H          |
-| Have all components render                           | H        | 10H            | 5H          |
+| Have all components render                           | H        | 10H            | 6H          |
 
 ### Post MVP
 
