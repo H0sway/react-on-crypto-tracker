@@ -10,22 +10,32 @@ class Tracker extends Component {
     this.state = {
       dataLoaded: false,
       trackerData: [],
+      profile: null,
     }
   }
   componentDidMount() {
-    axios({
-      method: 'POST',
-      url: `api/tracker/${req.user.id}`,
-    })
-    .then(currencies => {
-      this.setState({
-        dataLoaded: true,
-        trackerData: currencies.data.data,
-      });
-    })
-    .catch(err => {
-      console.log('api/tracker call error', err);
-    });
+  //   axios({
+  //     method: 'POST',
+  //     url: `api/tracker/${user.id}`,
+  //   })
+  //   .then(currencies => {
+  //     this.setState({
+  //       dataLoaded: true,
+  //       trackerData: currencies.data.data,
+  //     });
+  //   })
+  //   .catch(err => {
+  //     console.log('api/tracker call error', err);
+  //   });
+    this.setState({ profile: {} });
+      const { userProfile, getProfile } = this.props.auth;
+      if (!userProfile) {
+        getProfile((err, profile) => {
+          this.setState({ profile });
+        });
+      } else {
+        this.setState({ profile: userProfile });
+    }
   }
   login() {
     this.props.auth.login();
@@ -48,12 +58,15 @@ class Tracker extends Component {
     }
   }
   render() {
+    console.log(this.state.profile);
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="Tracker">
         {
           isAuthenticated() && (
-              (this.state.dataLoaded ? this.renderTable() : <p>Loading... This could take a while</p>)
+              <div>
+                {this.state.dataLoaded ? this.renderTable() : <p>Loading... This could take a while</p>}
+              </div>
             )
         }
         {
