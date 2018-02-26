@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
+
+import { Grid } from 'react-bootstrap';
+
 import App from './App';
 import Home from './components/Home';
 import TrackerWrapper from './components/TrackerWrapper';
@@ -20,14 +23,16 @@ export const makeMainRoutes = () => {
   return (
     <Router history={history} component={App}>
       <div>
-        <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-        <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
-        <Route path="/tracker" render={(props) => <TrackerWrapper auth={auth} {...props} />} />
-        <Route path="/add" render={(props) => <TrackerAdd auth={auth} {...props} />} />
-        <Route path="/callback" render={(props) => {
-          handleAuthentication(props);
-          return <Callback {...props} />
-        }}/>
+        <Grid>
+          <Route path="/" render={(props) => <App auth={auth} {...props} />} />
+          <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          <Route path="/tracker" render={(props) => <TrackerWrapper auth={auth} {...props} />} />
+          <Route path="/add" render={(props) => <TrackerAdd auth={auth} {...props} />} />
+          <Route path="/callback" render={(props) => {
+            handleAuthentication(props);
+            return <Callback {...props} />
+          }}/>
+        </Grid>
       </div>
     </Router>
   );

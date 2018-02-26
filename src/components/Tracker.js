@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Jumbotron, Button } from 'react-bootstrap';
+import { Jumbotron, Button, Row } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import TrackerTable from './TrackerTable';
 
@@ -52,8 +52,10 @@ class Tracker extends Component {
   render() {
     return (
       <div className="Tracker">
-        <LinkContainer to="/add"><Button bsStyle="success">Add</Button></LinkContainer>
-        {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This could take a while</p>}
+        <Row>
+          <LinkContainer to="/add"><Button bsStyle="success">Add</Button></LinkContainer>
+          {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This could take a while</p>}
+        </Row>
       </div>
     );
  }

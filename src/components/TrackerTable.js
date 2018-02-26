@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Glyphicon, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -34,23 +34,26 @@ export default class TrackerTable extends Component {
   }
   renderTableBody() {
     if (this.state.dataLoaded) {
-      const investValue = parseFloat(this.state.currency.value_usd) * this.props.currency.investment
+      const priceUsd = parseFloat(this.state.currency.price_usd).toFixed(2);
+      const priceBtc = parseFloat(this.state.currency.price_btc).toFixed(8);
+      const marketCap = parseFloat(this.state.currency.market_cap_usd).toFixed(0);
+      const investValue = priceUsd * this.props.currency.investment;
       return (
         <ListGroup>
-          <ListGroupItem>Name: {this.state.currency.name} </ListGroupItem>
-          <ListGroupItem>Value (USD): ${parseFloat(this.state.currency.value_usd).toFixed(2)} </ListGroupItem>
-          <ListGroupItem>Value (BTC): <Glyphicon glyph="bitcoin" />{parseFloat(this.state.currency.value_btc).toFixed(8)} </ListGroupItem>
-          <ListGroupItem>Market Cap: ${parseFloat(this.state.currency.market_cap_usd).toFixed(0)} </ListGroupItem>
-          <ListGroupItem>Percent Change (7 Days): {this.state.currency.percent_change_7d}% </ListGroupItem>
-          <ListGroupItem>Investment Amount: {this.props.currency.investment} </ListGroupItem>
-          <ListGroupItem>Investment Value: {investValue.toFixed(2)} </ListGroupItem>
+          <ListGroupItem><strong>Name:</strong> {this.state.currency.name} </ListGroupItem>
+          <ListGroupItem><strong>Value (USD):</strong> ${priceUsd} </ListGroupItem>
+          <ListGroupItem><strong>Value (BTC):</strong> <Glyphicon glyph="bitcoin" />{priceBtc} </ListGroupItem>
+          <ListGroupItem><strong>Market Cap:</strong> ${marketCap} </ListGroupItem>
+          <ListGroupItem><strong>Percent Change (7 Days):</strong> {this.state.currency.percent_change_7d}% </ListGroupItem>
+          <ListGroupItem><strong>Investment Amount:</strong> {this.props.currency.investment} </ListGroupItem>
+          <ListGroupItem><strong>Investment Value:</strong> ${investValue.toFixed(2)} </ListGroupItem>
         </ListGroup>
       )
     }
   }
   render() {
     return (
-      <div className="Tracker-Table">
+      <div className="Tracker-Table" sm={10} md={6}>
         {this.renderTableBody()}
       </div>
     );
