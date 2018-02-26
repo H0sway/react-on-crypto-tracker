@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Jumbotron, Button, Row } from 'react-bootstrap';
+import { Jumbotron, Button, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import TrackerTable from './TrackerTable';
 
@@ -22,20 +22,26 @@ class Tracker extends Component {
       }
     })
     .then(currencies => {
-      this.setState({
-        dataLoaded: true,
-        trackerData: currencies.data.currencies,
-      });
+      if (currencies) {
+        this.setState({
+          dataLoaded: true,
+          trackerData: currencies.data.currencies,
+        });
+      }
     })
     .catch(err => {
       console.log('api/tracker call error', err);
     });
   }
   renderTable() {
-    if (this.state.trackerData) {
+    if (this.state.trackerData.length) {
       return this.state.trackerData.map(currency => {
         return (
-          <TrackerTable key={currency.currency_id} currency={currency} />
+          <div>
+            <Col sm={10} md={6}>
+              <TrackerTable key={currency.currency_id} currency={currency} />
+            </Col>
+          </div>
         )
       })
     }

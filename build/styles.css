@@ -23,6 +23,31 @@ footer {
 
 }
 
+.Tracker {
+  text-align: center;
+  margin: 2em auto;
+}
+
+.TrackerAdd a {
+  margin-bottom: 2em;
+}
+
+.add-form {
+  text-align: left;
+}
+
+.add-form form input {
+  margin: .5em;
+}
+
+.add-form form label {
+  margin: 0 .5em;
+}
+
+.add-form form button {
+  margin: 0 .5em;
+}
+
 .Tracker-Table {
   text-align: left;
   margin: 2em auto;
