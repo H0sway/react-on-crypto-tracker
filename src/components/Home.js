@@ -5,7 +5,7 @@ import HomeTable from './HomeTable';
 
 export default class Home extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       dataLoaded: false,
       currencies: [],

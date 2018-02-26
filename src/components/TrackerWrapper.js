@@ -2,33 +2,42 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Tracker from './Tracker';
 
-export default class TrackerWrapper extends React {
+export default class TrackerWrapper extends Component {
   constructor() {
     super();
     this.state = {
       profile: {},
+      dataLoaded: false,
     }
   }
   componentDidMount() {
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile });
+        this.setState({
+          profile: profile,
+          dataLoaded: true
+        });
       });
     } else {
-      this.setState({ profile: userProfile });
+      this.setState({
+        profile: userProfile,
+        dataLoaded: true,
+      });
     }
   }
   login() {
     this.props.auth.login();
   }
   render() {
+    console.log(this.state.profile);
+    const { isAuthenticated } = this.props.auth;
     return (
       <div className="TrackerWrapper">
         {
           isAuthenticated() && (
               <div>
-                <Tracker profile={this.state.profile} />
+                {this.state.dataLoaded ? <Tracker profile={this.state.profile} /> : ''}
               </div>
             )
         }
