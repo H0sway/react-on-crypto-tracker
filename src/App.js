@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends Component {
@@ -25,35 +25,41 @@ class App extends Component {
     return (
       <div>
         <Navbar fluid>
-          <Navbar.Header sm={12} md={8}>
-            <Navbar.Brand>
-              The L33t H4ck3r'5 CryptoCurrency Tracker
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav sm={8} md={4}>
-            <LinkContainer to="/home">
-              <NavItem>Top 50</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/tracker">
-              <NavItem>My Tracker</NavItem>
-            </LinkContainer>
-            {!isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.login.bind(this)}
-              >
-                Log In
-              </Button>}
-            {isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.logout.bind(this)}
-              >
-                Log Out
-              </Button>}
-          </Nav>
+          <Row className="show-grid">
+            <Col  sm={12} md={6}>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  The L33t H4ck3r'5 CryptoCurrency Tracker
+                </Navbar.Brand>
+              </Navbar.Header>
+            </Col>
+            <Nav>
+              <LinkContainer to="/home">
+                <NavItem sm={6} md={2}>Top 50</NavItem>
+              </LinkContainer>
+                <LinkContainer to="/tracker">
+                  <NavItem sm={6} md={2}>My Tracker</NavItem>
+                </LinkContainer>
+              <Col sm={8} md={2}>
+                {!isAuthenticated() &&
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>}
+                {isAuthenticated() &&
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </Button>}
+              </Col>
+            </Nav>
+          </Row>
         </Navbar>
       </div>
     );

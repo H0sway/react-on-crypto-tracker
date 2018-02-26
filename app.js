@@ -35,7 +35,7 @@ const checkJwt = jwt({
 const checkScopes = jwtAuthz([ 'read:currencies', 'create:currency', 'update:currency', 'delete:currency' ]);
 
 // API Routes
-app.use('/api/tracker', checkJwt, checkScopes, require('./routes/tracker-routes'));
+app.use('/api/tracker', require('./routes/tracker-routes'));
 app.use('/api/currencydata', require('./routes/cmc-routes'));
 app.get('/*', (req,res) => {
   res.sendFile(path.join(__dirname + '/index.html'))

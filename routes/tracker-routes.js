@@ -4,10 +4,10 @@ const trackerRouter = express.Router();
 const trackerController = require('../controllers/tracker-controller');
 
 // All the routes
-trackerRouter.get('/', trackerController.tracker);
-trackerRouter.post('/', trackerController.add);
+trackerRouter.post('/', trackerController.tracker);
+trackerRouter.post('/add', trackerController.add);
 trackerRouter.get('/:id', trackerController.single);
-trackerRouter.post('/:id', trackerController.update);
+trackerRouter.put('/:id', trackerController.update);
 trackerRouter.delete('/:id', trackerController.delete);
 
 module.exports = trackerRouter;

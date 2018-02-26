@@ -1,37 +1,64 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Jumbotron, Button, Row } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import TrackerTable from './TrackerTable';
 
 class Tracker extends Component {
-  login() {
-    this.props.auth.login();
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataLoaded: false,
+      trackerData: [],
+    };
+  }
+  componentDidMount() {
+    console.log(this.props.profile.sub);
+    axios({
+      method: 'POST',
+      url: '/api/tracker/',
+      data: {
+        user_id: this.props.profile.sub,
+      }
+    })
+    .then(currencies => {
+      this.setState({
+        dataLoaded: true,
+        trackerData: currencies.data.currencies,
+      });
+    })
+    .catch(err => {
+      console.log('api/tracker call error', err);
+    });
+  }
+  renderTable() {
+    if (this.state.trackerData) {
+      return this.state.trackerData.map(currency => {
+        return (
+          <TrackerTable key={currency.currency_id} currency={currency} />
+        )
+      })
+    }
+    else {
+      return (
+        <div className="no-data-message">
+          <Jumbotron>
+            <h3>You aren't tracking any currencies. Try adding one!</h3>
+          </Jumbotron>
+        </div>
+      )
+    }
   }
   render() {
-    const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
-        {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
-        }
+      <div className="Tracker">
+        <Row>
+          <LinkContainer to="/add"><Button bsStyle="success">Add</Button></LinkContainer>
+          {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This could take a while</p>}
+        </Row>
       </div>
     );
-  }
+ }
 }
 
 export default Tracker;
