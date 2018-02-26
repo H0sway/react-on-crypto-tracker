@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 import HomeTable from './HomeTable';
@@ -29,7 +30,11 @@ export default class Home extends Component {
   render() {
     return (
       <div className="Home">
-        {this.state.dataLoaded ? <HomeTable currencies={this.state.currencies} /> : <p>Loading... This might take a while</p> }
+        <Row>
+          <Col xs={12} md={12}>
+            {this.state.dataLoaded ? <HomeTable currencies={this.state.currencies} /> : <p>Loading... This might take a while</p> }
+          </Col>
+        </Row>
       </div>
     );
   }

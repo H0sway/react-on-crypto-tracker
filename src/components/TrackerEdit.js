@@ -93,11 +93,11 @@ export default class TrackerEdit extends Component {
   render() {
     return (
       <div className="TrackerEdit">
+        <LinkContainer to="/tracker">
+          <Button bsStyle="warning">Back to Tracker</Button>
+        </LinkContainer>
         {this.state.dataLoaded ? this.editForm() : ''}
         {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
-        <LinkContainer to="/tracker">
-          <p>Back to Tracker</p>
-        </LinkContainer>
       </div>
     );
   }

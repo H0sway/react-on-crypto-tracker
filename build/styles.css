@@ -19,13 +19,21 @@ footer {
   padding: 2em;
 }
 
-.navbar {
-
+.navbar button {
+  margin: .5em;
 }
 
 .Tracker {
   text-align: center;
   margin: 2em auto;
+}
+
+.list-group span:hover {
+  background: #D9D7D6;
+}
+
+.list-group a {
+  margin: 1em 0;
 }
 
 .TrackerAdd a {
@@ -46,6 +54,31 @@ footer {
 
 .add-form form button {
   margin: 0 .5em;
+}
+
+.TrackerEdit a {
+  margin: 1em auto;
+}
+
+.edit-form {
+  text-align: center;
+}
+
+.edit-form form input {
+  margin: .5em;
+}
+
+.edit-form form label {
+  text-align: left;
+  margin: 0 .5em;
+}
+
+.edit-form form button {
+  margin: 0 auto;
+}
+
+.edit-form button {
+  margin: .5em auto;
 }
 
 .Tracker-Table {

@@ -33,14 +33,14 @@ class App extends Component {
                 </Navbar.Brand>
               </Navbar.Header>
             </Col>
-            <Nav>
-              <LinkContainer to="/home">
-                <NavItem sm={6} md={2}>Top 50</NavItem>
-              </LinkContainer>
-                <LinkContainer to="/tracker">
-                  <NavItem sm={6} md={2}>My Tracker</NavItem>
+            <Col sm={12} md={6}>
+              <Nav>
+                <LinkContainer to="/home">
+                  <NavItem>Top 50</NavItem>
                 </LinkContainer>
-              <Col sm={8} md={2}>
+                <LinkContainer to="/tracker">
+                  <NavItem>My Tracker</NavItem>
+                </LinkContainer>
                 {!isAuthenticated() &&
                   <Button
                     bsStyle="primary"
@@ -57,8 +57,8 @@ class App extends Component {
                   >
                     Log Out
                   </Button>}
-              </Col>
-            </Nav>
+              </Nav>
+            </Col>
           </Row>
         </Navbar>
       </div>
