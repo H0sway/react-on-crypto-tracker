@@ -47,6 +47,7 @@ export default class TrackerTable extends Component {
           <ListGroupItem><strong>Percent Change (7 Days):</strong> {this.state.currency.percent_change_7d}% </ListGroupItem>
           <ListGroupItem><strong>Investment Amount:</strong> {this.props.currency.investment} </ListGroupItem>
           <ListGroupItem><strong>Investment Value:</strong> ${investValue.toFixed(2)} </ListGroupItem>
+          <LinkContainer to={`/edit/${this.props.currency.id}`}><Button bsStyle="warning">Edit</Button></LinkContainer>
         </ListGroup>
       )
     }

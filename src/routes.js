@@ -7,6 +7,7 @@ import App from './App';
 import Home from './components/Home';
 import TrackerWrapper from './components/TrackerWrapper';
 import TrackerAdd from './components/TrackerAdd';
+import TrackerEdit from './components/TrackerEdit';
 import Callback from './components/Callback';
 import Auth from './auth/Auth';
 import history from './history';
@@ -28,6 +29,7 @@ export const makeMainRoutes = () => {
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/tracker" render={(props) => <TrackerWrapper auth={auth} {...props} />} />
           <Route path="/add" render={(props) => <TrackerAdd auth={auth} {...props} />} />
+          <Route path="/edit/:id" render={(props) => <TrackerEdit auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} />
