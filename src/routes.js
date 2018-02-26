@@ -23,7 +23,7 @@ export const makeMainRoutes = () => {
         <Route path="/" render={(props) => <App auth={auth} {...props} />} />
         <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
         <Route path="/tracker" render={(props) => <TrackerWrapper auth={auth} {...props} />} />
-        <Route path="/tracker/add" render={(props) => <TrackerAdd auth={auth} {...props} />} />
+        <Route path="/add" render={(props) => <TrackerAdd auth={auth} {...props} />} />
         <Route path="/callback" render={(props) => {
           handleAuthentication(props);
           return <Callback {...props} />

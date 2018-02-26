@@ -4,7 +4,7 @@ const axios = require('axios');
 const trackerController = {};
 
 trackerController.tracker = (req,res) => {
-  Currency.findAll(req.user.id)
+  Currency.findAll(req.body.user_id)
   .then(currencies => {
     res.json({
       message: 'Individual tracker data',
@@ -46,7 +46,7 @@ trackerController.update = (req,res) => {
 };
 
 trackerController.add = (req,res) => {
-  Currency.new({
+  Currency.create({
     user_id: req.body.user_id,
     currency_id: req.body.currency_id,
     investment: req.body.investment

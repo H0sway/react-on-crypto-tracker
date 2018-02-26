@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Button, Gliphicon } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
+import axios from 'axios';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class TrackerTable extends Component {
@@ -11,16 +12,21 @@ export default class TrackerTable extends Component {
     }
   }
   componentDidMount() {
+    console.log(this.props.currency.currency_id);
     axios({
       method: 'POST',
-      url: `/api/currencydata/${this.props.currency.currency_id}`
+      url: `/api/currencydata/${this.props.currency.currency_id}`,
+      data: {
+        currency_id: this.props.currency.currency_id,
+      }
     })
     .then(data => {
+      console.log(data);
       this.setState({
         dataLoaded: true,
         currency: data.data.data[0],
       })
-      console.log(this.state.currencyValue);
+      console.log(this.state.currency);
     })
     .catch(err => {
       console.log('TrackerTable error', err);
@@ -45,6 +51,7 @@ export default class TrackerTable extends Component {
   render() {
     return (
       <div className="Tracker-Table">
+        {this.renderTableBody()}
       </div>
     );
   }

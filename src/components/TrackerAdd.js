@@ -11,21 +11,26 @@ class TrackerAdd extends Component {
       currencyId: null,
       investment: null,
       profile: {},
+      dataLoaded: false,
       fireRedirect: false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    const { userProfile, getProfile } = this.props.auth;
+   const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile });
+        this.setState({
+          profile: profile,
+          dataLoaded: true,
+        });
       });
     } else {
       this.setState({
         profile: userProfile,
-      })
+        dataLoaded: true,
+      });
     }
   }
   handleChange(e) {
@@ -39,7 +44,7 @@ class TrackerAdd extends Component {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: '/tracker',
+      url: '/api/tracker/add',
       data: {
         user_id: this.state.profile.sub,
         currency_id: this.state.currencyId,
@@ -52,7 +57,7 @@ class TrackerAdd extends Component {
       })
     })
     .catch(err => {
-      console.log('Posting to /tracker error', err);
+      console.log('Posting to api/tracker error', err);
     })
   }
   renderForm() {
@@ -60,11 +65,12 @@ class TrackerAdd extends Component {
       <div className="add-form">
         <Jumbotron>
           <h3>Add a currency!</h3>
-          <p>We get our cryptocurrency data from the amazing people at <LinkContainer to="www.coinmarketcap.com">Coin Market Cap</LinkContainer>. If you're having trouble finding a currency, please check and make sure you're spelling it correctly.</p>
+          <p>We get our cryptocurrency data from the amazing people at Coin Market Cap. If you're having trouble finding a currency, please check and make sure you're spelling it correctly.</p>
         </Jumbotron>
         <form onSubmit={this.handleSubmit}>
           <ControlLabel>Currency: </ControlLabel>
           <FormControl
+            name="currencyId"
             type="text"
             value={this.state.currencyId}
             placeholder="Ex. Bitcoin"
@@ -72,13 +78,14 @@ class TrackerAdd extends Component {
           />
           <ControlLabel>Investment: </ControlLabel>
           <FormControl
+            name="investment"
             type="number"
             step="any"
             value={this.state.investment}
-            placeholder="0"
+            placeholder='0'
             onChange={this.handleChange}
           />
-          <Button bsStyle="Primary" type="submit">Add Me!</Button>
+          <Button bsStyle="primary" type="submit">Add Me!</Button>
         </form>
       </div>
     )
@@ -86,7 +93,7 @@ class TrackerAdd extends Component {
   render() {
     return (
       <div className="TrackerAdd">
-        <Button href="/tracker">Back to Tracker</Button>
+        <Button href="/tracker" bsStyle="danger">Back to Tracker</Button>
         {this.renderForm()}
         {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
       </div>

@@ -13,15 +13,18 @@ class Tracker extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.props.profile);
+    console.log(this.props.profile.sub);
     axios({
       method: 'POST',
-      url: `api/tracker/${this.props.profile.sub}`,
+      url: '/api/tracker/',
+      data: {
+        user_id: this.props.profile.sub,
+      }
     })
     .then(currencies => {
       this.setState({
         dataLoaded: true,
-        trackerData: currencies.data.data,
+        trackerData: currencies.data.currencies,
       });
     })
     .catch(err => {
@@ -30,9 +33,11 @@ class Tracker extends Component {
   }
   renderTable() {
     if (this.state.trackerData) {
-     this.state.trackerdata.map(currency => {
-      return <TrackerTable key={currency.currency_id} currency={currency} />
-     })
+      return this.state.trackerData.map(currency => {
+        return (
+          <TrackerTable key={currency.currency_id} currency={currency} />
+        )
+      })
     }
     else {
       return (
@@ -47,8 +52,8 @@ class Tracker extends Component {
   render() {
     return (
       <div className="Tracker">
-        <Button bsStyle="success" href="/tracker/add">Add</Button>
-        {this.state.dataLoaded ? this.renderTable() : <p>Loading... This could take a while</p>}
+        <LinkContainer to="/add"><Button bsStyle="success">Add</Button></LinkContainer>
+        {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This could take a while</p>}
       </div>
     );
  }
