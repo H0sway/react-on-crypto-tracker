@@ -1,0 +1,87 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  border-top: 1px solid #000000;
+  background: #000000;
+  color: #4dffff;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  max-height: 30px;
+  width: 100%;
+  padding: .5em 0 2em 0;
+}
+
+.Home {
+  padding: 2em;
+}
+
+.navbar button {
+  margin: .5em;
+}
+
+.Tracker {
+  text-align: center;
+  margin: 2em auto;
+}
+
+.list-group span:hover {
+  background: #D9D7D6;
+}
+
+.list-group a {
+  margin: 1em 0;
+}
+
+.TrackerAdd a {
+  margin-bottom: 2em;
+}
+
+.add-form {
+  text-align: left;
+}
+
+.add-form form input {
+  margin: .5em;
+}
+
+.add-form form label {
+  margin: 0 .5em;
+}
+
+.add-form form button {
+  margin: 0 .5em;
+}
+
+.TrackerEdit a {
+  margin: 1em auto;
+}
+
+.edit-form {
+  text-align: center;
+}
+
+.edit-form form input {
+  margin: .5em;
+}
+
+.edit-form form label {
+  text-align: left;
+  margin: 0 .5em;
+}
+
+.edit-form form button {
+  margin: 0 auto;
+}
+
+.edit-form button {
+  margin: .5em auto;
+}
+
+.Tracker-Table {
+  text-align: left;
+  margin: 2em auto;
+}
