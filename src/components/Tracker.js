@@ -10,7 +10,7 @@ class Tracker extends Component {
     this.state = {
       dataLoaded: false,
       trackerData: [],
-      profile: null,
+      profile: {},
     }
   }
   componentDidMount() {
@@ -27,15 +27,15 @@ class Tracker extends Component {
   //   .catch(err => {
   //     console.log('api/tracker call error', err);
   //   });
-    this.setState({ profile: {} });
-      const { userProfile, getProfile } = this.props.auth;
-      if (!userProfile) {
-        getProfile((err, profile) => {
-          this.setState({ profile });
-        });
-      } else {
-        this.setState({ profile: userProfile });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
     }
+
   }
   login() {
     this.props.auth.login();
