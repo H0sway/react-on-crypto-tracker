@@ -12,7 +12,7 @@ All the features planned for the app along with their priority, estimated, and c
 
 | Component                                            | Priority | Estimated Time | Actual Time |
 |------------------------------------------------------|----------|----------------|-------------|
-| Table with top X Cryptos                             | H        | 1H             |             |
+| Table with top X Cryptos                             | H        | 1H             | 1H          |
 | Implement Auth                                       | H        | 10H            | 15H         |
 | CRUD Functionality for tracker/investments           | H        | 15H            | 6H          |
 | Responsive design using Bootstrap                    | M        | 8H             | 4H          |
