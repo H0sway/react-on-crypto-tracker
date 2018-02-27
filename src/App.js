@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Navbar, Nav, NavItem, Button, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -42,6 +41,9 @@ class App extends Component {
                 <LinkContainer to="/tracker">
                   <NavItem>My Tracker</NavItem>
                 </LinkContainer>
+                <LinkContainer to="/about">
+                  <NavItem>About</NavItem>
+                </LinkContainer>
                 {!isAuthenticated() &&
                   <Button
                     bsStyle="primary"
@@ -62,7 +64,6 @@ class App extends Component {
             </Col>
           </Row>
         </Navbar>
-        <Redirect push to="/home" />
       </div>
     );
   }
