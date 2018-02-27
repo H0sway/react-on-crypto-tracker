@@ -32,6 +32,7 @@ class TrackerAdd extends Component {
         dataLoaded: true,
       });
     }
+    console.log(this.state.profile);
   }
   handleChange(e) {
     const name = e.target.name;

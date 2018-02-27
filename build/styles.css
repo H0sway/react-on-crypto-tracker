@@ -36,6 +36,22 @@ footer {
   margin: 1em 0;
 }
 
+.About button {
+  margin-bottom: 3em;
+}
+
+.about-links {
+  text-decoration: none;
+}
+
+.contact {
+  text-align: left;
+}
+
+.contact li {
+  display: inline-block;
+}
+
 .TrackerAdd a {
   margin-bottom: 2em;
 }

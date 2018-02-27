@@ -24085,6 +24085,10 @@ var _TrackerEdit = __webpack_require__(445);
 
 var _TrackerEdit2 = _interopRequireDefault(_TrackerEdit);
 
+var _About = __webpack_require__(446);
+
+var _About2 = _interopRequireDefault(_About);
+
 var _Callback = __webpack_require__(407);
 
 var _Callback2 = _interopRequireDefault(_Callback);
@@ -24131,6 +24135,9 @@ var makeMainRoutes = exports.makeMainRoutes = function makeMainRoutes() {
           } }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/edit/:id', render: function render(props) {
             return _react2.default.createElement(_TrackerEdit2.default, _extends({ auth: auth }, props));
+          } }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/about', render: function render(props) {
+            return _react2.default.createElement(_About2.default, _extends({ auth: auth }, props));
           } }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/callback', render: function render(props) {
             handleAuthentication(props);
@@ -27896,8 +27903,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(118);
-
 var _reactBootstrap = __webpack_require__(57);
 
 var _reactRouterBootstrap = __webpack_require__(106);
@@ -27991,6 +27996,15 @@ var App = function (_Component) {
                     'My Tracker'
                   )
                 ),
+                _react2.default.createElement(
+                  _reactRouterBootstrap.LinkContainer,
+                  { to: '/about' },
+                  _react2.default.createElement(
+                    _reactBootstrap.NavItem,
+                    null,
+                    'About'
+                  )
+                ),
                 !isAuthenticated() && _react2.default.createElement(
                   _reactBootstrap.Button,
                   {
@@ -28012,8 +28026,7 @@ var App = function (_Component) {
               )
             )
           )
-        ),
-        _react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/home' })
+        )
       );
     }
   }]);
@@ -47451,6 +47464,7 @@ var TrackerAdd = function (_Component) {
           dataLoaded: true
         });
       }
+      console.log(this.state.profile);
     }
   }, {
     key: 'handleChange',
@@ -47738,6 +47752,178 @@ var TrackerEdit = function (_Component) {
 }(_react.Component);
 
 exports.default = TrackerEdit;
+
+/***/ }),
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(57);
+
+var _reactRouterBootstrap = __webpack_require__(106);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var About = function (_Component) {
+  _inherits(About, _Component);
+
+  function About(props, context) {
+    _classCallCheck(this, About);
+
+    var _this = _possibleConstructorReturn(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this));
+
+    _this.state = { show: false };
+    _this.handleShow = _this.handleShow.bind(_this);
+    _this.handleClose = _this.handleClose.bind(_this);
+    return _this;
+  }
+
+  _createClass(About, [{
+    key: 'handleShow',
+    value: function handleShow() {
+      this.setState({ show: true });
+    }
+  }, {
+    key: 'handleClose',
+    value: function handleClose() {
+      this.setState({ show: false });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'About' },
+        _react2.default.createElement(
+          _reactBootstrap.PageHeader,
+          null,
+          'About this page'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Jumbotron,
+          null,
+          _react2.default.createElement(
+            'h4',
+            null,
+            'Welcome to my CryptoCurrency investment tracker!'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'With "Tulip Mania" about CryptoCurrencies reaching an all time high in winter of 2017 I wanted to create a web app that would also let me research a little more into the subject. This tracker is designed to allow users to sign in and access their own personal tracker where they can add currencies to their own personal list along with the amount they own (if any) to easily calculate how much their investment is worth.'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'p',
+            null,
+            ' This site gets it\'s data on CryptoCurrencies from the site ',
+            _react2.default.createElement(
+              'a',
+              { className: 'about-links', href: 'https://coinmarketcap.com' },
+              'Coin Market Cap.'
+            ),
+            'If you\'d like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn\'t show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.'
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Button,
+          { bsStyle: 'primary', onClick: this.handleShow },
+          'Contact Information'
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Modal,
+          { show: this.state.show, onHide: this.handleClose },
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Header,
+            { closeButton: true },
+            _react2.default.createElement(
+              _reactBootstrap.Modal.Title,
+              null,
+              'Contact'
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Body,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Row,
+              null,
+              _react2.default.createElement(
+                'ul',
+                { className: 'contact' },
+                _react2.default.createElement(
+                  _reactBootstrap.Col,
+                  { xs: 6, md: 5 },
+                  _react2.default.createElement(
+                    'li',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Email:'
+                    ),
+                    _react2.default.createElement('br', null),
+                    'jkrussell756@gmail.com'
+                  )
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Col,
+                  { xs: 6, md: 5 },
+                  _react2.default.createElement(
+                    'li',
+                    null,
+                    _react2.default.createElement(
+                      'strong',
+                      null,
+                      'Github:'
+                    ),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'about-links', href: 'https://github.com/H0sway' },
+                      'Hosway'
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Modal.Footer,
+            null,
+            _react2.default.createElement(
+              _reactBootstrap.Button,
+              { bsStyle: 'danger', onClick: this.handleClose },
+              'Close'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return About;
+}(_react.Component);
+
+exports.default = About;
 
 /***/ })
 /******/ ]);
