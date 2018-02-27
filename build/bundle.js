@@ -47447,24 +47447,27 @@ var TrackerAdd = function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var _props$auth = this.props.auth,
-          userProfile = _props$auth.userProfile,
-          getProfile = _props$auth.getProfile;
+      var isAuthenticated = this.props.auth.isAuthenticated;
 
-      if (!userProfile) {
-        getProfile(function (err, profile) {
-          _this2.setState({
-            profile: profile,
+      if (isAuthenticated()) {
+        var _props$auth = this.props.auth,
+            userProfile = _props$auth.userProfile,
+            getProfile = _props$auth.getProfile;
+
+        if (!userProfile) {
+          getProfile(function (err, profile) {
+            _this2.setState({
+              profile: profile,
+              dataLoaded: true
+            });
+          });
+        } else {
+          this.setState({
+            profile: userProfile,
             dataLoaded: true
           });
-        });
-      } else {
-        this.setState({
-          profile: userProfile,
-          dataLoaded: true
-        });
+        }
       }
-      console.log(this.state.profile);
     }
   }, {
     key: 'handleChange',
@@ -47552,18 +47555,45 @@ var TrackerAdd = function (_Component) {
       );
     }
   }, {
+    key: 'login',
+    value: function login() {
+      this.props.auth.login();
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var isAuthenticated = this.props.auth.isAuthenticated;
+
       return _react2.default.createElement(
         'div',
         { className: 'TrackerAdd' },
-        _react2.default.createElement(
-          _reactBootstrap.Button,
-          { href: '/tracker', bsStyle: 'danger' },
-          'Back to Tracker'
+        isAuthenticated() && _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Button,
+            { href: '/tracker', bsStyle: 'danger' },
+            'Back to Tracker'
+          ),
+          this.renderForm(),
+          this.state.fireRedirect ? _react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/tracker' }) : ''
         ),
-        this.renderForm(),
-        this.state.fireRedirect ? _react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/tracker' }) : ''
+        !isAuthenticated() && _react2.default.createElement(
+          'h4',
+          null,
+          'You are not logged in! Please',
+          ' ',
+          _react2.default.createElement(
+            'a',
+            {
+              style: { cursor: 'pointer' },
+              onClick: this.login.bind(this)
+            },
+            'Log In'
+          ),
+          ' ',
+          'to continue.'
+        )
       );
     }
   }]);

@@ -18,21 +18,23 @@ class TrackerAdd extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-   const { userProfile, getProfile } = this.props.auth;
-    if (!userProfile) {
-      getProfile((err, profile) => {
+    const { isAuthenticated  } = this.props.auth;
+    if (isAuthenticated()) {
+      const { userProfile, getProfile } = this.props.auth;
+      if (!userProfile) {
+        getProfile((err, profile) => {
+          this.setState({
+            profile: profile,
+            dataLoaded: true,
+          });
+        });
+      } else {
         this.setState({
-          profile: profile,
+          profile: userProfile,
           dataLoaded: true,
         });
-      });
-    } else {
-      this.setState({
-        profile: userProfile,
-        dataLoaded: true,
-      });
+      }
     }
-    console.log(this.state.profile);
   }
   handleChange(e) {
     const name = e.target.name;
@@ -91,12 +93,35 @@ class TrackerAdd extends Component {
       </div>
     )
   }
+  login() {
+    this.props.auth.login();
+  }
   render() {
+    const { isAuthenticated } = this.props.auth;
     return (
       <div className="TrackerAdd">
-        <Button href="/tracker" bsStyle="danger">Back to Tracker</Button>
-        {this.renderForm()}
-        {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
+        {
+         isAuthenticated() && (
+         <div>
+          <Button href="/tracker" bsStyle="danger">Back to Tracker</Button>
+            {this.renderForm()}
+            {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
+          </div>
+         )
+        }
+        {
+          !isAuthenticated() && (
+            <h4>You are not logged in! Please{' '}
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.login.bind(this)}
+                >
+                  Log In
+                </a>
+                {' '}to continue.
+              </h4>
+          )
+        }
       </div>
     )
   }
