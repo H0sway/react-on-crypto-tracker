@@ -68,9 +68,12 @@ table tbody:hover {
 }
 
 .list-group span {
-  font-family: Hack, monospace;
   background: #262626;
   border-color: #79ff4d;
+}
+
+.list-group strong {
+  font-family: Hack, monospace;
 }
 
 .list-group span:hover {
@@ -80,6 +83,18 @@ table tbody:hover {
 .list-group a {
   margin: 1em 0;
   margin-left: 15px;
+}
+
+.TrackerAdd .jumbotron {
+  background-color: #262626;
+}
+
+.TrackerAdd form input {
+  color: #B24D12;
+}
+
+.edit-form form input {
+  color: #B24D12;
 }
 
 .About .page-header {

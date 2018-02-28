@@ -32,7 +32,7 @@ export default class Home extends Component {
       <div className="Home">
         <Row>
           <Col xs={12} md={12}>
-            {this.state.dataLoaded ? <HomeTable currencies={this.state.currencies} /> : <p>Loading... This might take a while</p> }
+            {this.state.dataLoaded ? <HomeTable currencies={this.state.currencies} /> :  <p>Loading... Just sit back and relax</p> }
           </Col>
         </Row>
       </div>
