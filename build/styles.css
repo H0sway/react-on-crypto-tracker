@@ -27,12 +27,13 @@ table {
   border-color: #4dffff;
 }
 
-table th {
-  border-color: #4dffff;
+table tr th {
+  border: 1px solid #4dffff;
 }
 
 table tbody {
   font-family: Hack, monospace;
+  background-color: #0A0A0A;
 }
 
 table tbody:hover {
