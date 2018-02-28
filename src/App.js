@@ -23,7 +23,7 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div>
+      <div className="Header">
         <Navbar fluid>
           <Row className="show-grid">
             <Col  sm={12} md={6}>
@@ -64,6 +64,9 @@ class App extends Component {
             </Col>
           </Row>
         </Navbar>
+        <footer>
+          <p>Created by Joshua K. Russell</p>
+        </footer>
       </div>
     );
   }

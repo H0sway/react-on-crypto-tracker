@@ -1,26 +1,60 @@
-body {
-  margin: 0 auto;
-  text-align: center;
+@font-face {
+  font-family: Hacked;
+  src: url(https://hackedfont.com/HACKED.ttf);
 }
 
-footer {
+html {
+  background-color: #000000;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  background-color: #000000;
+  color: #4dffff;
+}
+
+.navbar-brand {
+  font-family: Hacked;
+}
+
+nav button {
+  margin-left: .5em;
+  margin-top: .5em;
+}
+
+table {
+  border-color: #4dffff;
+}
+
+table th {
+  border-color: #4dffff;
+}
+
+table tbody {
+  font-family: Hack, monospace;
+}
+
+table tbody:hover {
+  background-color: #4d4d4d;
+}
+
+.Header footer {
   border-top: 1px solid #000000;
   background: #000000;
   color: #4dffff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   position: fixed;
   left: 0px;
   bottom: 0px;
   max-height: 30px;
   width: 100%;
   padding: .5em 0 2em 0;
+  z-index: 20;
 }
 
 .Home {
   padding: 2em;
-}
-
-.navbar button {
-  margin: .5em;
 }
 
 .Tracker {
@@ -28,12 +62,32 @@ footer {
   margin: 2em auto;
 }
 
+.list-group {
+  border: .2em solid #79ff4d;
+  background-color: #262626;
+}
+
+.list-group span {
+  font-family: Hack, monospace;
+  background: #262626;
+  border-color: #79ff4d;
+}
+
 .list-group span:hover {
-  background: #D9D7D6;
+  background: #4A4A4A;
 }
 
 .list-group a {
   margin: 1em 0;
+  margin-left: 15px;
+}
+
+.About .page-header {
+  border-bottom: #4dffff;
+}
+
+.About .jumbotron {
+  background-color: #262626;
 }
 
 .About button {

@@ -27952,7 +27952,7 @@ var App = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'Header' },
         _react2.default.createElement(
           _reactBootstrap.Navbar,
           { fluid: true },
@@ -28025,6 +28025,15 @@ var App = function (_Component) {
                 )
               )
             )
+          )
+        ),
+        _react2.default.createElement(
+          'footer',
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            'Created by Joshua K. Russell'
           )
         )
       );
@@ -41576,7 +41585,7 @@ var HomeTable = function HomeTable(props) {
   });
   return _react2.default.createElement(
     _reactBootstrap.Table,
-    { bordered: true, condensed: true, hover: true, responsive: true },
+    { bordered: true, condensed: true, responsive: true },
     _react2.default.createElement(
       'thead',
       null,
@@ -47858,7 +47867,7 @@ var About = function (_Component) {
           _react2.default.createElement(
             'p',
             null,
-            'With "Tulip Mania" about CryptoCurrencies reaching an all time high in winter of 2017 I wanted to create a web app that would also let me research a little more into the subject. This tracker is designed to allow users to sign in and access their own personal tracker where they can add currencies to their own personal list along with the amount they own (if any) to easily calculate how much their investment is worth.'
+            'With the "Tulip Mania" surrounding CryptoCurrencies reaching an all time high in winter of 2017 I wanted to create a web app that would allow me research a little more into the subject. This tracker is a place where users can sign in and access their own personal tracker where they can add currencies to their own personal list along with the amount they own (if any) to easily calculate how much their investment is worth.'
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement(
