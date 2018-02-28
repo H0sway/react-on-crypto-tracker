@@ -69,6 +69,18 @@ table tbody:hover {
   padding: 2em;
 }
 
+.jumbotron {
+  font-family: 'Mukta Mahee', sans-serif;
+}
+
+.no-data-message {
+  margin: 2em auto;
+}
+
+.no-data-message .jumbotron {
+  background-color: #262626;
+}
+
 .Tracker {
   text-align: center;
   margin: 2em auto;
