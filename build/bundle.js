@@ -40434,7 +40434,7 @@ var App = function (_Component) {
             { className: 'show-grid' },
             _react2.default.createElement(
               _reactBootstrap.Col,
-              { sm: 12, md: 6 },
+              { xs: 12, md: 7 },
               _react2.default.createElement(
                 _reactBootstrap.Navbar.Header,
                 null,
@@ -40447,7 +40447,7 @@ var App = function (_Component) {
             ),
             _react2.default.createElement(
               _reactBootstrap.Col,
-              { sm: 12, md: 6 },
+              { xs: 12, md: 5 },
               _react2.default.createElement(
                 _reactBootstrap.Nav,
                 null,
@@ -41833,7 +41833,7 @@ var Tracker = function (_Component) {
             { key: currency.currency_id },
             _react2.default.createElement(
               _reactBootstrap.Col,
-              { sm: 10, md: 6 },
+              { xs: 10, md: 6 },
               _react2.default.createElement(_TrackerTable2.default, { currency: currency })
             )
           );

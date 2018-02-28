@@ -38,7 +38,7 @@ class Tracker extends Component {
       return this.state.trackerData.map(currency => {
         return (
           <div key={currency.currency_id}>
-            <Col sm={10} md={6}>
+            <Col xs={10} md={6}>
               <TrackerTable currency={currency} />
             </Col>
           </div>

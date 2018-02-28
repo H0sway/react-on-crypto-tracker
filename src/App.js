@@ -26,14 +26,14 @@ class App extends Component {
       <div className="Header">
         <Navbar fluid>
           <Row className="show-grid">
-            <Col  sm={12} md={6}>
+            <Col  xs={12} md={7}>
               <Navbar.Header>
                 <Navbar.Brand>
                   The L33t H4ck3r'5 CryptoCurrency Tracker
                 </Navbar.Brand>
               </Navbar.Header>
             </Col>
-            <Col sm={12} md={6}>
+            <Col xs={12} md={5}>
               <Nav>
                 <LinkContainer to="/home" className="nav-link">
                   <NavItem>Top 50</NavItem>
