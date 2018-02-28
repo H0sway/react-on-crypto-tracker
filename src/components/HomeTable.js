@@ -21,7 +21,7 @@ const HomeTable = (props) => {
         )
     })
     return (
-      <Table bordered condensed hover responsive >
+      <Table bordered condensed responsive >
         <thead>
           <tr>
             <th>Rank</th>

@@ -37,9 +37,9 @@ class Tracker extends Component {
     if (this.state.trackerData.length) {
       return this.state.trackerData.map(currency => {
         return (
-          <div>
+          <div key={currency.currency_id}>
             <Col sm={10} md={6}>
-              <TrackerTable key={currency.currency_id} currency={currency} />
+              <TrackerTable currency={currency} />
             </Col>
           </div>
         )
@@ -60,7 +60,7 @@ class Tracker extends Component {
       <div className="Tracker">
         <Row>
           <LinkContainer to="/add"><Button bsStyle="success">Add</Button></LinkContainer>
-          {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This could take a while</p>}
+          {this.state.dataLoaded ? <div>{this.renderTable()}</div> : <p>Loading... This might take some time</p>}
         </Row>
       </div>
     );

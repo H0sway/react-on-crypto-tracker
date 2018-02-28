@@ -24,7 +24,7 @@ class About extends Component {
         <Jumbotron>
           <h4>Welcome to my CryptoCurrency investment tracker!</h4>
           <p>
-             With "Tulip Mania" about CryptoCurrencies reaching an all time high in winter of 2017 I wanted to create a web app that would also let me research a little more into the subject. This tracker is designed to allow users to sign in and access their own personal tracker where they can add currencies to their own personal list along with the amount they own (if any) to easily calculate how much their investment is worth.
+             With the "Tulip Mania" surrounding CryptoCurrencies reaching an all time high in winter of 2017 I wanted to create a web app that would allow me research a little more into the subject. This tracker is a place where users can sign in and access their own personal tracker where they can add currencies to their own personal list along with the amount they own (if any) to easily calculate how much their investment is worth.
           </p>
           <br />
           <p> This site gets it's data on CryptoCurrencies from the site <a className="about-links" href="https://coinmarketcap.com">Coin Market Cap.</a>If you'd like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn't show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.
