@@ -1230,7 +1230,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* eslint-disable guard-for-in */
 
 var assert = __webpack_require__(29);
-var objectAssign = __webpack_require__(421);
+var objectAssign = __webpack_require__(420);
 
 function pick(object, keys) {
   return keys.reduce(function (prev, key) {
@@ -1723,7 +1723,7 @@ module.exports = {
   getWindow: getWindow,
   getOrigin: getOrigin
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(423)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(422)))
 
 /***/ }),
 /* 20 */
@@ -4846,8 +4846,8 @@ module.exports = RequestBuilder;
 "use strict";
 
 
-var stringify = __webpack_require__(419);
-var parse = __webpack_require__(420);
+var stringify = __webpack_require__(418);
+var parse = __webpack_require__(419);
 var formats = __webpack_require__(185);
 
 module.exports = {
@@ -7170,7 +7170,7 @@ module.exports = { raw: '9.3.0' };
 "use strict";
 
 
-var random = __webpack_require__(438);
+var random = __webpack_require__(437);
 var storage = __webpack_require__(187);
 
 var DEFAULT_NAMESPACE = 'com.auth0.auth.';
@@ -13480,11 +13480,11 @@ var objectHelper = __webpack_require__(17);
 var assert = __webpack_require__(29);
 var ssodata = __webpack_require__(186);
 var responseHandler = __webpack_require__(34);
-var parametersWhitelist = __webpack_require__(427);
+var parametersWhitelist = __webpack_require__(426);
 var Warn = __webpack_require__(45);
 
-var PasswordlessAuthentication = __webpack_require__(428);
-var DBConnection = __webpack_require__(429);
+var PasswordlessAuthentication = __webpack_require__(427);
+var DBConnection = __webpack_require__(428);
 
 /**
  * Creates a new Auth0 Authentication API client
@@ -13954,11 +13954,11 @@ if (typeof window !== 'undefined') {
   root = undefined;
 }
 
-var Emitter = __webpack_require__(414);
-var RequestBase = __webpack_require__(415);
+var Emitter = __webpack_require__(413);
+var RequestBase = __webpack_require__(414);
 var isObject = __webpack_require__(181);
-var ResponseBase = __webpack_require__(416);
-var Agent = __webpack_require__(418);
+var ResponseBase = __webpack_require__(415);
+var Agent = __webpack_require__(417);
 
 /**
  * Noop.
@@ -15328,7 +15328,7 @@ module.exports = {
 "use strict";
 
 
-var StorageHandler = __webpack_require__(422);
+var StorageHandler = __webpack_require__(421);
 var storage;
 
 function getStorage(force) {
@@ -15387,23 +15387,23 @@ module.exports = {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var IdTokenVerifier = __webpack_require__(430);
+var IdTokenVerifier = __webpack_require__(429);
 
 var assert = __webpack_require__(29);
 var error = __webpack_require__(188);
 var qs = __webpack_require__(73);
-var PluginHandler = __webpack_require__(437);
+var PluginHandler = __webpack_require__(436);
 var windowHelper = __webpack_require__(19);
 var objectHelper = __webpack_require__(17);
 var ssodata = __webpack_require__(186);
 var TransactionManager = __webpack_require__(111);
 var Authentication = __webpack_require__(179);
-var Redirect = __webpack_require__(439);
-var Popup = __webpack_require__(440);
-var SilentAuthenticationHandler = __webpack_require__(443);
+var Redirect = __webpack_require__(438);
+var Popup = __webpack_require__(439);
+var SilentAuthenticationHandler = __webpack_require__(442);
 var CrossOriginAuthentication = __webpack_require__(112);
 var WebMessageHandler = __webpack_require__(192);
-var HostedPages = __webpack_require__(444);
+var HostedPages = __webpack_require__(443);
 
 /**
  * Handles all the browser's AuthN/AuthZ flows
@@ -24077,23 +24077,23 @@ var _TrackerWrapper = __webpack_require__(404);
 
 var _TrackerWrapper2 = _interopRequireDefault(_TrackerWrapper);
 
-var _TrackerAdd = __webpack_require__(408);
+var _TrackerAdd = __webpack_require__(407);
 
 var _TrackerAdd2 = _interopRequireDefault(_TrackerAdd);
 
-var _TrackerEdit = __webpack_require__(409);
+var _TrackerEdit = __webpack_require__(408);
 
 var _TrackerEdit2 = _interopRequireDefault(_TrackerEdit);
 
-var _About = __webpack_require__(410);
+var _About = __webpack_require__(409);
 
 var _About2 = _interopRequireDefault(_About);
 
-var _Callback = __webpack_require__(411);
+var _Callback = __webpack_require__(410);
 
 var _Callback2 = _interopRequireDefault(_Callback);
 
-var _Auth = __webpack_require__(412);
+var _Auth = __webpack_require__(411);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
@@ -40453,7 +40453,7 @@ var App = function (_Component) {
                 null,
                 _react2.default.createElement(
                   _reactRouterBootstrap.LinkContainer,
-                  { to: '/home' },
+                  { to: '/home', className: 'nav-link' },
                   _react2.default.createElement(
                     _reactBootstrap.NavItem,
                     null,
@@ -40462,7 +40462,7 @@ var App = function (_Component) {
                 ),
                 _react2.default.createElement(
                   _reactRouterBootstrap.LinkContainer,
-                  { to: '/tracker' },
+                  { to: '/tracker', className: 'nav-link' },
                   _react2.default.createElement(
                     _reactBootstrap.NavItem,
                     null,
@@ -40471,7 +40471,7 @@ var App = function (_Component) {
                 ),
                 _react2.default.createElement(
                   _reactRouterBootstrap.LinkContainer,
-                  { to: '/about' },
+                  { to: '/about', className: 'nav-link' },
                   _react2.default.createElement(
                     _reactBootstrap.NavItem,
                     null,
@@ -42087,8 +42087,7 @@ var TrackerTable = function (_Component) {
 exports.default = TrackerTable;
 
 /***/ }),
-/* 407 */,
-/* 408 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42306,7 +42305,7 @@ var TrackerAdd = function (_Component) {
 exports.default = TrackerAdd;
 
 /***/ }),
-/* 409 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42486,7 +42485,7 @@ var TrackerEdit = function (_Component) {
 exports.default = TrackerEdit;
 
 /***/ }),
-/* 410 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42658,7 +42657,7 @@ var About = function (_Component) {
 exports.default = About;
 
 /***/ }),
-/* 411 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42725,7 +42724,7 @@ var Callback = function (_Component) {
 exports.default = Callback;
 
 /***/ }),
-/* 412 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42737,7 +42736,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _auth0Js = __webpack_require__(413);
+var _auth0Js = __webpack_require__(412);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -42885,14 +42884,14 @@ var Auth = function () {
 exports.default = Auth;
 
 /***/ }),
-/* 413 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var Authentication = __webpack_require__(179);
-var Management = __webpack_require__(446);
+var Management = __webpack_require__(445);
 var WebAuth = __webpack_require__(189);
 var version = __webpack_require__(110);
 
@@ -42904,7 +42903,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 414 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43069,7 +43068,7 @@ Emitter.prototype.hasListeners = function (event) {
 };
 
 /***/ }),
-/* 415 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43767,7 +43766,7 @@ RequestBase.prototype._setTimeouts = function () {
 };
 
 /***/ }),
-/* 416 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43777,7 +43776,7 @@ RequestBase.prototype._setTimeouts = function () {
  * Module dependencies.
  */
 
-var utils = __webpack_require__(417);
+var utils = __webpack_require__(416);
 
 /**
  * Expose `ResponseBase`.
@@ -43905,7 +43904,7 @@ ResponseBase.prototype._setStatusProperties = function (status) {
 };
 
 /***/ }),
-/* 417 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43982,7 +43981,7 @@ exports.cleanHeader = function (header, changesOrigin) {
 };
 
 /***/ }),
-/* 418 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44009,7 +44008,7 @@ Agent.prototype._setDefaults = function (req) {
 module.exports = Agent;
 
 /***/ }),
-/* 419 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44180,7 +44179,7 @@ module.exports = function (object, opts) {
 };
 
 /***/ }),
-/* 420 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44354,7 +44353,7 @@ module.exports = function (str, opts) {
 };
 
 /***/ }),
-/* 421 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44402,15 +44401,15 @@ module.exports = {
 };
 
 /***/ }),
-/* 422 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var windowHandler = __webpack_require__(19);
-var DummyStorage = __webpack_require__(424);
-var CookieStorage = __webpack_require__(425);
+var DummyStorage = __webpack_require__(423);
+var CookieStorage = __webpack_require__(424);
 var Warn = __webpack_require__(45);
 
 function StorageHandler() {
@@ -44464,7 +44463,7 @@ StorageHandler.prototype.setItem = function (key, value) {
 module.exports = StorageHandler;
 
 /***/ }),
-/* 423 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44494,7 +44493,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 424 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44513,13 +44512,13 @@ DummyStorage.prototype.setItem = function () {};
 module.exports = DummyStorage;
 
 /***/ }),
-/* 425 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var cookies = __webpack_require__(426);
+var cookies = __webpack_require__(425);
 
 function CookieStorage() {}
 
@@ -44538,7 +44537,7 @@ CookieStorage.prototype.setItem = function (key, value) {
 module.exports = CookieStorage;
 
 /***/ }),
-/* 426 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44603,7 +44602,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 427 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44644,7 +44643,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 428 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44806,7 +44805,7 @@ PasswordlessAuthentication.prototype.verify = function (options, cb) {
 module.exports = PasswordlessAuthentication;
 
 /***/ }),
-/* 429 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44909,17 +44908,17 @@ DBConnection.prototype.changePassword = function (options, cb) {
 module.exports = DBConnection;
 
 /***/ }),
-/* 430 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var RSAVerifier = __webpack_require__(431);
+var RSAVerifier = __webpack_require__(430);
 var base64 = __webpack_require__(191);
-var jwks = __webpack_require__(434);
-var error = __webpack_require__(435);
-var DummyCache = __webpack_require__(436);
+var jwks = __webpack_require__(433);
+var error = __webpack_require__(434);
+var DummyCache = __webpack_require__(435);
 var supportedAlgs = ['RS256'];
 
 /**
@@ -45160,7 +45159,7 @@ IdTokenVerifier.prototype.decode = function (token) {
 module.exports = IdTokenVerifier;
 
 /***/ }),
-/* 431 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45172,8 +45171,8 @@ http://www-cs-students.stanford.edu/~tjw/jsbn/
 http://www-cs-students.stanford.edu/~tjw/jsbn/LICENSE
 */
 
-var BigInteger = __webpack_require__(432).BigInteger;
-var SHA256 = __webpack_require__(433);
+var BigInteger = __webpack_require__(431).BigInteger;
+var SHA256 = __webpack_require__(432);
 
 var DigestInfoHead = {
   sha1: '3021300906052b0e03021a05000414',
@@ -45244,7 +45243,7 @@ RSAVerifier.prototype.verify = function (msg, encsig) {
 module.exports = RSAVerifier;
 
 /***/ }),
-/* 432 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46793,7 +46792,7 @@ module.exports = RSAVerifier;
 }).call(undefined);
 
 /***/ }),
-/* 433 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46997,7 +46996,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 434 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47047,7 +47046,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 435 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47071,7 +47070,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 436 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47092,7 +47091,7 @@ DummyCache.prototype.set = function () {};
 module.exports = DummyCache;
 
 /***/ }),
-/* 437 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47131,7 +47130,7 @@ PluginHandler.prototype.get = function (extensibilityPoint) {
 module.exports = PluginHandler;
 
 /***/ }),
-/* 438 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47164,7 +47163,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 439 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47228,7 +47227,7 @@ Redirect.prototype.signupAndLogin = function (options, cb) {
 module.exports = Redirect;
 
 /***/ }),
-/* 440 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47237,10 +47236,10 @@ module.exports = Redirect;
 var urljoin = __webpack_require__(28);
 var WinChan = __webpack_require__(194);
 
-var urlHelper = __webpack_require__(441);
+var urlHelper = __webpack_require__(440);
 var assert = __webpack_require__(29);
 var responseHandler = __webpack_require__(34);
-var PopupHandler = __webpack_require__(442);
+var PopupHandler = __webpack_require__(441);
 var objectHelper = __webpack_require__(17);
 var windowHelper = __webpack_require__(19);
 var Warn = __webpack_require__(45);
@@ -47506,7 +47505,7 @@ Popup.prototype.signupAndLogin = function (options, cb) {
 module.exports = Popup;
 
 /***/ }),
-/* 441 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47525,7 +47524,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 442 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47614,7 +47613,7 @@ PopupHandler.prototype.load = function (url, relayUrl, options, cb) {
 module.exports = PopupHandler;
 
 /***/ }),
-/* 443 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47704,13 +47703,13 @@ SilentAuthenticationHandler.prototype.getCallbackHandler = function (callback, u
 module.exports = SilentAuthenticationHandler;
 
 /***/ }),
-/* 444 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var UsernamePassword = __webpack_require__(445);
+var UsernamePassword = __webpack_require__(444);
 var objectHelper = __webpack_require__(17);
 var windowHelper = __webpack_require__(19);
 var Warn = __webpack_require__(45);
@@ -47792,7 +47791,7 @@ HostedPages.prototype.signupAndLogin = function (options, cb) {
 module.exports = HostedPages;
 
 /***/ }),
-/* 445 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47845,7 +47844,7 @@ UsernamePassword.prototype.callback = function (formHtml) {
 module.exports = UsernamePassword;
 
 /***/ }),
-/* 446 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

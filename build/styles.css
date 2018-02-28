@@ -39,6 +39,18 @@ table tbody:hover {
   background-color: #4d4d4d;
 }
 
+.container-fluid {
+  background-color: #404040;
+}
+
+.nav-link {
+  color: #4dffff;
+}
+
+.nav-link:hover {
+  color: #267F7F;
+}
+
 .Header footer {
   border-top: 1px solid #000000;
   background: #000000;

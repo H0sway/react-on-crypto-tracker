@@ -35,13 +35,13 @@ class App extends Component {
             </Col>
             <Col sm={12} md={6}>
               <Nav>
-                <LinkContainer to="/home">
+                <LinkContainer to="/home" className="nav-link">
                   <NavItem>Top 50</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/tracker">
+                <LinkContainer to="/tracker" className="nav-link">
                   <NavItem>My Tracker</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/about">
+                <LinkContainer to="/about" className="nav-link">
                   <NavItem>About</NavItem>
                 </LinkContainer>
                 {!isAuthenticated() &&
