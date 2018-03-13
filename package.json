@@ -8,6 +8,10 @@
     "build": "webpack --watch",
     "start": "nodemon app.js"
   },
+  "engines": {
+    "node": "9.3.0",
+    "npm": "5.6.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://git.generalassemb.ly/H0sway/react-on-crypto-tracker.git"
