@@ -71,9 +71,9 @@
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(198);
-} else {
   module.exports = __webpack_require__(199);
+} else {
+  module.exports = __webpack_require__(200);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
@@ -958,9 +958,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(197);
+  module.exports = __webpack_require__(198);
 } else {
-  module.exports = __webpack_require__(202);
+  module.exports = __webpack_require__(203);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
@@ -7609,7 +7609,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(200);
+var isTextNode = __webpack_require__(201);
 
 /*eslint-disable no-bitwise */
 
@@ -17338,11 +17338,15 @@ exports.default = (0, _createBrowserHistory2.default)();
 "use strict";
 
 
+__webpack_require__(197);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
-
-__webpack_require__(207);
 
 var _routes = __webpack_require__(208);
 
@@ -17354,6 +17358,12 @@ _reactDom2.default.render(routes, document.getElementById('root'));
 
 /***/ }),
 /* 197 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19350,7 +19360,7 @@ Z.injectIntoDevTools({ findFiberByHostInstance: pb, bundleType: 0, version: "16.
     Ug = Tg && Sg || Tg;module.exports = Ug["default"] ? Ug["default"] : Ug;
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19479,7 +19489,7 @@ var U = { Children: { map: function map(a, b, e) {
     W = V && U || V;module.exports = W["default"] ? W["default"] : W;
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20839,7 +20849,7 @@ if (process.env.NODE_ENV !== "production") {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20854,7 +20864,7 @@ if (process.env.NODE_ENV !== "production") {
  * @typechecks
  */
 
-var isNode = __webpack_require__(201);
+var isNode = __webpack_require__(202);
 
 /**
  * @param {*} object The object to check.
@@ -20867,7 +20877,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20898,7 +20908,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20909,7 +20919,7 @@ module.exports = isNode;
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(0);var invariant=__webpack_require__(47);var warning=__webpack_require__(58);var ExecutionEnvironment=__webpack_require__(113);var _assign=__webpack_require__(46);var emptyFunction=__webpack_require__(24);var EventListener=__webpack_require__(114);var getActiveElement=__webpack_require__(115);var shallowEqual=__webpack_require__(116);var containsNode=__webpack_require__(117);var focusNode=__webpack_require__(118);var emptyObject=__webpack_require__(57);var checkPropTypes=__webpack_require__(74);var hyphenateStyleName=__webpack_require__(203);var camelizeStyleName=__webpack_require__(205);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(0);var invariant=__webpack_require__(47);var warning=__webpack_require__(58);var ExecutionEnvironment=__webpack_require__(113);var _assign=__webpack_require__(46);var emptyFunction=__webpack_require__(24);var EventListener=__webpack_require__(114);var getActiveElement=__webpack_require__(115);var shallowEqual=__webpack_require__(116);var containsNode=__webpack_require__(117);var focusNode=__webpack_require__(118);var emptyObject=__webpack_require__(57);var checkPropTypes=__webpack_require__(74);var hyphenateStyleName=__webpack_require__(204);var camelizeStyleName=__webpack_require__(206);/**
  * WARNING: DO NOT manually require this module.
  * This is a replacement for `invariant(...)` used by the error code system
  * and will _only_ be required by the corresponding babel pass.
@@ -23882,7 +23892,7 @@ var reactDom=ReactDOM$3['default']?ReactDOM$3['default']:ReactDOM$3;module.expor
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23897,7 +23907,7 @@ var reactDom=ReactDOM$3['default']?ReactDOM$3['default']:ReactDOM$3;module.expor
 
 
 
-var hyphenate = __webpack_require__(204);
+var hyphenate = __webpack_require__(205);
 
 var msPattern = /^ms-/;
 
@@ -23924,7 +23934,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23960,7 +23970,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23975,7 +23985,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(206);
+var camelize = __webpack_require__(207);
 
 var msPattern = /^-ms-/;
 
@@ -24003,7 +24013,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24036,12 +24046,6 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-
-/***/ }),
-/* 207 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 208 */
