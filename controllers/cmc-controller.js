@@ -14,7 +14,7 @@ cmcController.top = (req,res) => {
       data: cryptos.data
     });
   })
-  .then(err => {
+  .catch(err => {
     console.log('Top 50 CMC API call error', err);
   });
 };
