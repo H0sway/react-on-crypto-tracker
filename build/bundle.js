@@ -40446,7 +40446,8 @@ var App = function (_Component) {
                   _reactBootstrap.Navbar.Brand,
                   null,
                   'The L33t H4ck3r\'5 CryptoCurrency Tracker'
-                )
+                ),
+                _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
               )
             ),
             _react2.default.createElement(
@@ -41970,7 +41971,7 @@ var TrackerTable = function (_Component) {
     key: 'renderTableBody',
     value: function renderTableBody() {
       if (this.state.dataLoaded) {
-        var priceUsd = parseFloat(this.state.currency.price_usd).toFixed(2);
+        var priceUsd = parseFloat(this.state.currency.price_usd).toFixed(8);
         var priceBtc = parseFloat(this.state.currency.price_btc).toFixed(8);
         var marketCap = parseFloat(this.state.currency.market_cap_usd).toFixed(0);
         var investValue = priceUsd * this.props.currency.investment;
@@ -42187,20 +42188,35 @@ var TrackerAdd = function (_Component) {
       var _this3 = this;
 
       e.preventDefault();
+      console.log(this.state.currencyId);
       (0, _axios2.default)({
         method: 'POST',
-        url: '/api/tracker/add',
+        url: 'https://api.coinmarketcap.com/v1/ticker/' + this.state.currencyId,
         data: {
-          user_id: this.state.profile.sub,
-          currency_id: this.state.currencyId,
-          investment: this.state.investment
+          currency_id: this.state.currencyId
         }
-      }).then(function (currency) {
-        _this3.setState({
-          fireRedirect: true
+      }).then(function (crypto) {
+        (0, _axios2.default)({
+          method: 'POST',
+          url: '/api/tracker/add',
+          data: {
+            user_id: _this3.state.profile.sub,
+            currency_id: _this3.state.currencyId,
+            investment: _this3.state.investment
+          }
+        }).then(function (currency) {
+          _this3.setState({
+            fireRedirect: true
+          });
+        }).catch(function (err) {
+          console.log('Posting to api/tracker error', err);
         });
       }).catch(function (err) {
-        console.log('Posting to api/tracker error', err);
+        if (err) {
+          return alert("Sorry, we couldn't find " + _this3.state.currencyId + ". Please try something else.");
+        } else {
+          return;
+        }
       });
     }
   }, {
@@ -42760,7 +42776,8 @@ var Auth = function () {
     this.auth0 = new _auth0Js2.default.WebAuth({
       domain: 'reactcryptotracker.auth0.com',
       clientID: '15xx7sHnun63bAxPGtrluIl11ipOIUsc',
-      redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
+      redirectUri: 'http://localhost:3000/callback',
+      // redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
       audience: 'https://reactcryptotracker.auth0.com/userinfo',
       responseType: 'token id_token',
       scope: this.requestedScopes

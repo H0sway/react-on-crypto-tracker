@@ -45,22 +45,40 @@ class TrackerAdd extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state.currencyId);
     axios({
       method: 'POST',
-      url: '/api/tracker/add',
+      url: `https://api.coinmarketcap.com/v1/ticker/${this.state.currencyId}`,
       data: {
-        user_id: this.state.profile.sub,
         currency_id: this.state.currencyId,
-        investment: this.state.investment,
       }
     })
-    .then(currency => {
-      this.setState({
-        fireRedirect: true,
+    .then(crypto => {
+        axios({
+          method: 'POST',
+          url: '/api/tracker/add',
+          data: {
+            user_id: this.state.profile.sub,
+            currency_id: this.state.currencyId,
+            investment: this.state.investment,
+          }
+        })
+        .then(currency => {
+          this.setState({
+            fireRedirect: true,
+          })
+        })
+        .catch(err => {
+          console.log('Posting to api/tracker error', err);
+        })
       })
-    })
     .catch(err => {
-      console.log('Posting to api/tracker error', err);
+      if (err) {
+        return alert("Sorry, we couldn't find " + this.state.currencyId + ". Please try something else." );
+      }
+      else {
+        return;
+      }
     })
   }
   renderForm() {

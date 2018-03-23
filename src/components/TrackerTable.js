@@ -34,7 +34,7 @@ export default class TrackerTable extends Component {
   }
   renderTableBody() {
     if (this.state.dataLoaded) {
-      const priceUsd = parseFloat(this.state.currency.price_usd).toFixed(2);
+      const priceUsd = parseFloat(this.state.currency.price_usd).toFixed(8);
       const priceBtc = parseFloat(this.state.currency.price_btc).toFixed(8);
       const marketCap = parseFloat(this.state.currency.market_cap_usd).toFixed(0);
       const investValue = priceUsd * this.props.currency.investment;

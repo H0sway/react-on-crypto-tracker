@@ -20,7 +20,6 @@ cmcController.top = (req,res) => {
 };
 
 cmcController.tracker = (req,res) => {
-  // console.log(req.body.currency_id);
   axios({
     method: 'GET',
     url: `https://api.coinmarketcap.com/v1/ticker/${req.body.currency_id}`

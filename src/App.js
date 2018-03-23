@@ -31,6 +31,7 @@ class App extends Component {
                 <Navbar.Brand>
                   The L33t H4ck3r'5 CryptoCurrency Tracker
                 </Navbar.Brand>
+                <Navbar.Toggle />
               </Navbar.Header>
             </Col>
             <Col xs={12} md={5}>
