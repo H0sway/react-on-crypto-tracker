@@ -11,6 +11,8 @@ class TrackerAdd extends Component {
       currencyId: null,
       investment: null,
       profile: {},
+      searching: false,
+      notFound: false,
       dataLoaded: false,
       fireRedirect: false,
     }
@@ -45,40 +47,38 @@ class TrackerAdd extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.currencyId);
     axios({
-      method: 'POST',
-      url: `https://api.coinmarketcap.com/v1/ticker/${this.state.currencyId}`,
-      data: {
-        currency_id: this.state.currencyId,
-      }
+      method: 'GET',
+      url: `https://api.coinmarketcap.com/v1/ticker/?limit=0`,
     })
-    .then(crypto => {
-        axios({
-          method: 'POST',
-          url: '/api/tracker/add',
-          data: {
-            user_id: this.state.profile.sub,
-            currency_id: this.state.currencyId,
-            investment: this.state.investment,
-          }
-        })
-        .then(currency => {
-          this.setState({
-            fireRedirect: true,
+    .then(cryptos => {
+      this.setState({searching: true});
+      cryptos.data.forEach(crypto => {
+        console.log(crypto.id);
+        if (crypto.id === this.state.currencyId.toLowerCase()) {
+          return axios({
+            method: 'POST',
+            url: '/api/tracker/add',
+            data: {
+              user_id: this.state.profile.sub,
+              currency_id: this.state.currencyId,
+              investment: this.state.investment,
+            }
           })
-        })
-        .catch(err => {
-          console.log('Posting to api/tracker error', err);
-        })
+          .then(currency => {
+            this.setState({
+              searching: false,
+              fireRedirect: true,
+            })
+          })
+          .catch(err => {
+            console.log('Posting to api/tracker error', err);
+          });
+        }
       })
+    })
     .catch(err => {
-      if (err) {
-        return alert("Sorry, we couldn't find " + this.state.currencyId + ". Please try something else." );
-      }
-      else {
-        return;
-      }
+      console.log("finding the currency error", err);
     })
   }
   renderForm() {
@@ -88,6 +88,7 @@ class TrackerAdd extends Component {
           <h3>Add a currency!</h3>
           <p>We get our cryptocurrency data from the amazing people at Coin Market Cap. If you're having trouble finding a currency, please check and make sure you're spelling it correctly.</p>
         </Jumbotron>
+        {this.notTrue ? <p>Sorry, we couldn't find that. Please try something else</p> : ""}
         <form onSubmit={this.handleSubmit}>
           <ControlLabel>Currency: </ControlLabel>
           <FormControl
@@ -122,7 +123,7 @@ class TrackerAdd extends Component {
          isAuthenticated() && (
          <div>
           <Button href="/tracker" bsStyle="danger">Back to Tracker</Button>
-            {this.renderForm()}
+          {this.state.searching ? <p>Searching... Sorry for the wait</p> : <div>{this.renderForm()}</div>}
             {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
           </div>
          )

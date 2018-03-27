@@ -42140,6 +42140,8 @@ var TrackerAdd = function (_Component) {
       currencyId: null,
       investment: null,
       profile: {},
+      searching: false,
+      notFound: false,
       dataLoaded: false,
       fireRedirect: false
     };
@@ -42188,35 +42190,34 @@ var TrackerAdd = function (_Component) {
       var _this3 = this;
 
       e.preventDefault();
-      console.log(this.state.currencyId);
       (0, _axios2.default)({
-        method: 'POST',
-        url: 'https://api.coinmarketcap.com/v1/ticker/' + this.state.currencyId,
-        data: {
-          currency_id: this.state.currencyId
-        }
-      }).then(function (crypto) {
-        (0, _axios2.default)({
-          method: 'POST',
-          url: '/api/tracker/add',
-          data: {
-            user_id: _this3.state.profile.sub,
-            currency_id: _this3.state.currencyId,
-            investment: _this3.state.investment
+        method: 'GET',
+        url: 'https://api.coinmarketcap.com/v1/ticker/?limit=0'
+      }).then(function (cryptos) {
+        _this3.setState({ searching: true });
+        cryptos.data.forEach(function (crypto) {
+          console.log(crypto.id);
+          if (crypto.id === _this3.state.currencyId.toLowerCase()) {
+            return (0, _axios2.default)({
+              method: 'POST',
+              url: '/api/tracker/add',
+              data: {
+                user_id: _this3.state.profile.sub,
+                currency_id: _this3.state.currencyId,
+                investment: _this3.state.investment
+              }
+            }).then(function (currency) {
+              _this3.setState({
+                searching: false,
+                fireRedirect: true
+              });
+            }).catch(function (err) {
+              console.log('Posting to api/tracker error', err);
+            });
           }
-        }).then(function (currency) {
-          _this3.setState({
-            fireRedirect: true
-          });
-        }).catch(function (err) {
-          console.log('Posting to api/tracker error', err);
         });
       }).catch(function (err) {
-        if (err) {
-          return alert("Sorry, we couldn't find " + _this3.state.currencyId + ". Please try something else.");
-        } else {
-          return;
-        }
+        console.log("finding the currency error", err);
       });
     }
   }, {
@@ -42239,6 +42240,11 @@ var TrackerAdd = function (_Component) {
             'We get our cryptocurrency data from the amazing people at Coin Market Cap. If you\'re having trouble finding a currency, please check and make sure you\'re spelling it correctly.'
           )
         ),
+        this.notTrue ? _react2.default.createElement(
+          'p',
+          null,
+          'Sorry, we couldn\'t find that. Please try something else'
+        ) : "",
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit },
@@ -42296,7 +42302,15 @@ var TrackerAdd = function (_Component) {
             { href: '/tracker', bsStyle: 'danger' },
             'Back to Tracker'
           ),
-          this.renderForm(),
+          this.state.searching ? _react2.default.createElement(
+            'p',
+            null,
+            'Searching... Sorry for the wait'
+          ) : _react2.default.createElement(
+            'div',
+            null,
+            this.renderForm()
+          ),
           this.state.fireRedirect ? _react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/tracker' }) : ''
         ),
         !isAuthenticated() && _react2.default.createElement(
@@ -42591,7 +42605,7 @@ var About = function (_Component) {
               { className: 'about-links', href: 'https://coinmarketcap.com' },
               'Coin Market Cap.'
             ),
-            'If you\'d like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn\'t show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.'
+            ' If you\'d like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn\'t show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.'
           )
         ),
         _react2.default.createElement(
