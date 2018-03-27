@@ -40432,74 +40432,67 @@ var App = function (_Component) {
         { className: 'Header' },
         _react2.default.createElement(
           _reactBootstrap.Navbar,
-          { fluid: true },
+          { fluid: true, collapseOnSelect: true },
           _react2.default.createElement(
-            _reactBootstrap.Row,
-            { className: 'show-grid' },
+            _reactBootstrap.Navbar.Header,
+            null,
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12, md: 7 },
-              _react2.default.createElement(
-                _reactBootstrap.Navbar.Header,
-                null,
-                _react2.default.createElement(
-                  _reactBootstrap.Navbar.Brand,
-                  null,
-                  'The L33t H4ck3r\'5 CryptoCurrency Tracker'
-                )
-              )
+              _reactBootstrap.Navbar.Brand,
+              null,
+              'The L33t H4ck3r\'5 CryptoCurrency Tracker'
             ),
+            _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Navbar.Collapse,
+            null,
             _react2.default.createElement(
-              _reactBootstrap.Col,
-              { xs: 12, md: 5 },
+              _reactBootstrap.Nav,
+              { pullRight: true },
               _react2.default.createElement(
-                _reactBootstrap.Nav,
-                null,
+                _reactRouterBootstrap.LinkContainer,
+                { to: '/home', className: 'nav-link' },
                 _react2.default.createElement(
-                  _reactRouterBootstrap.LinkContainer,
-                  { to: '/home', className: 'nav-link' },
-                  _react2.default.createElement(
-                    _reactBootstrap.NavItem,
-                    null,
-                    'Top 50'
-                  )
-                ),
-                _react2.default.createElement(
-                  _reactRouterBootstrap.LinkContainer,
-                  { to: '/tracker', className: 'nav-link' },
-                  _react2.default.createElement(
-                    _reactBootstrap.NavItem,
-                    null,
-                    'My Tracker'
-                  )
-                ),
-                _react2.default.createElement(
-                  _reactRouterBootstrap.LinkContainer,
-                  { to: '/about', className: 'nav-link' },
-                  _react2.default.createElement(
-                    _reactBootstrap.NavItem,
-                    null,
-                    'About'
-                  )
-                ),
-                !isAuthenticated() && _react2.default.createElement(
-                  _reactBootstrap.Button,
-                  {
-                    bsStyle: 'primary',
-                    className: 'btn-margin',
-                    onClick: this.login.bind(this)
-                  },
-                  'Log In'
-                ),
-                isAuthenticated() && _react2.default.createElement(
-                  _reactBootstrap.Button,
-                  {
-                    bsStyle: 'primary',
-                    className: 'btn-margin',
-                    onClick: this.logout.bind(this)
-                  },
-                  'Log Out'
+                  _reactBootstrap.NavItem,
+                  null,
+                  'Top 50'
                 )
+              ),
+              _react2.default.createElement(
+                _reactRouterBootstrap.LinkContainer,
+                { to: '/tracker', className: 'nav-link' },
+                _react2.default.createElement(
+                  _reactBootstrap.NavItem,
+                  null,
+                  'My Tracker'
+                )
+              ),
+              _react2.default.createElement(
+                _reactRouterBootstrap.LinkContainer,
+                { to: '/about', className: 'nav-link' },
+                _react2.default.createElement(
+                  _reactBootstrap.NavItem,
+                  null,
+                  'About'
+                )
+              ),
+              !isAuthenticated() && _react2.default.createElement(
+                _reactBootstrap.Button,
+                {
+                  bsStyle: 'primary',
+                  className: 'btn-margin',
+                  onClick: this.login.bind(this)
+                },
+                'Log In'
+              ),
+              isAuthenticated() && _react2.default.createElement(
+                _reactBootstrap.Button,
+                {
+                  bsStyle: 'primary',
+                  className: 'btn-margin',
+                  onClick: this.logout.bind(this)
+                },
+                'Log Out'
               )
             )
           )
@@ -41970,7 +41963,7 @@ var TrackerTable = function (_Component) {
     key: 'renderTableBody',
     value: function renderTableBody() {
       if (this.state.dataLoaded) {
-        var priceUsd = parseFloat(this.state.currency.price_usd).toFixed(2);
+        var priceUsd = parseFloat(this.state.currency.price_usd).toFixed(8);
         var priceBtc = parseFloat(this.state.currency.price_btc).toFixed(8);
         var marketCap = parseFloat(this.state.currency.market_cap_usd).toFixed(0);
         var investValue = priceUsd * this.props.currency.investment;
@@ -42139,6 +42132,8 @@ var TrackerAdd = function (_Component) {
       currencyId: null,
       investment: null,
       profile: {},
+      searching: false,
+      notFound: false,
       dataLoaded: false,
       fireRedirect: false
     };
@@ -42188,19 +42183,43 @@ var TrackerAdd = function (_Component) {
 
       e.preventDefault();
       (0, _axios2.default)({
-        method: 'POST',
-        url: '/api/tracker/add',
-        data: {
-          user_id: this.state.profile.sub,
-          currency_id: this.state.currencyId,
-          investment: this.state.investment
-        }
-      }).then(function (currency) {
+        method: 'GET',
+        url: 'https://api.coinmarketcap.com/v1/ticker/?limit=0'
+      }).then(function (cryptos) {
         _this3.setState({
-          fireRedirect: true
+          searching: true
         });
+        var found = [];
+        cryptos.data.forEach(function (crypto) {
+          if (crypto.id == _this3.state.currencyId.toLowerCase()) {
+            found.push(crypto.id);
+          }
+        });
+        if (found.length) {
+          (0, _axios2.default)({
+            method: 'POST',
+            url: '/api/tracker/add',
+            data: {
+              user_id: _this3.state.profile.sub,
+              currency_id: _this3.state.currencyId,
+              investment: _this3.state.investment
+            }
+          }).then(function (currency) {
+            _this3.setState({
+              searching: false,
+              fireRedirect: true
+            });
+          }).catch(function (err) {
+            console.log('Posting to api/tracker error', err);
+          });
+        } else {
+          alert('Sorry, we couldn\'t find ' + _this3.state.currencyId + ', please try something else');
+          _this3.setState({
+            searching: false
+          });
+        };
       }).catch(function (err) {
-        console.log('Posting to api/tracker error', err);
+        console.log("finding the currency error", err);
       });
     }
   }, {
@@ -42223,6 +42242,11 @@ var TrackerAdd = function (_Component) {
             'We get our cryptocurrency data from the amazing people at Coin Market Cap. If you\'re having trouble finding a currency, please check and make sure you\'re spelling it correctly.'
           )
         ),
+        this.notFound ? _react2.default.createElement(
+          'p',
+          null,
+          'Sorry, we couldn\'t find that. Please try something else'
+        ) : "",
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit },
@@ -42280,7 +42304,15 @@ var TrackerAdd = function (_Component) {
             { href: '/tracker', bsStyle: 'danger' },
             'Back to Tracker'
           ),
-          this.renderForm(),
+          this.state.searching ? _react2.default.createElement(
+            'p',
+            null,
+            'Searching... Sorry for the wait'
+          ) : _react2.default.createElement(
+            'div',
+            null,
+            this.renderForm()
+          ),
           this.state.fireRedirect ? _react2.default.createElement(_reactRouterDom.Redirect, { push: true, to: '/tracker' }) : ''
         ),
         !isAuthenticated() && _react2.default.createElement(
@@ -42575,7 +42607,7 @@ var About = function (_Component) {
               { className: 'about-links', href: 'https://coinmarketcap.com' },
               'Coin Market Cap.'
             ),
-            'If you\'d like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn\'t show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.'
+            ' If you\'d like more in depth information or are having difficulty finding something here head over to their site. They limit requests to their API to 10 per minute so if this site starts running slowly wait a minute or two before accessing it again. If you add a currency to your tracker and it doesn\'t show up try again but check your spelling carefully. When nothing shows up we were unable to find that currency in the Coin Market Cap database. Click the button below to reach the developer.'
           )
         ),
         _react2.default.createElement(
@@ -42760,7 +42792,8 @@ var Auth = function () {
     this.auth0 = new _auth0Js2.default.WebAuth({
       domain: 'reactcryptotracker.auth0.com',
       clientID: '15xx7sHnun63bAxPGtrluIl11ipOIUsc',
-      redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
+      redirectUri: 'http://localhost:3000/callback',
+      // redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
       audience: 'https://reactcryptotracker.auth0.com/userinfo',
       responseType: 'token id_token',
       scope: this.requestedScopes

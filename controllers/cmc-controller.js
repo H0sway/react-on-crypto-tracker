@@ -14,13 +14,12 @@ cmcController.top = (req,res) => {
       data: cryptos.data
     });
   })
-  .then(err => {
+  .catch(err => {
     console.log('Top 50 CMC API call error', err);
   });
 };
 
 cmcController.tracker = (req,res) => {
-  // console.log(req.body.currency_id);
   axios({
     method: 'GET',
     url: `https://api.coinmarketcap.com/v1/ticker/${req.body.currency_id}`
