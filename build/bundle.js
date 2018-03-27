@@ -42792,8 +42792,8 @@ var Auth = function () {
     this.auth0 = new _auth0Js2.default.WebAuth({
       domain: 'reactcryptotracker.auth0.com',
       clientID: '15xx7sHnun63bAxPGtrluIl11ipOIUsc',
-      redirectUri: 'http://localhost:3000/callback',
-      // redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
+      // redirectUri: 'http://localhost:3000/callback',
+      redirectUri: 'https://warm-basin-91810.herokuapp.com/callback',
       audience: 'https://reactcryptotracker.auth0.com/userinfo',
       responseType: 'token id_token',
       scope: this.requestedScopes
