@@ -52,35 +52,46 @@ class TrackerAdd extends Component {
       url: `https://api.coinmarketcap.com/v1/ticker/?limit=0`,
     })
     .then(cryptos => {
-      this.setState({searching: true});
-      cryptos.data.forEach(crypto => {
-        console.log(crypto.id);
-        if (crypto.id === this.state.currencyId.toLowerCase()) {
-          return axios({
-            method: 'POST',
-            url: '/api/tracker/add',
-            data: {
-              user_id: this.state.profile.sub,
-              currency_id: this.state.currencyId,
-              investment: this.state.investment,
-            }
-          })
-          .then(currency => {
-            this.setState({
-              searching: false,
-              fireRedirect: true,
-            })
-          })
-          .catch(err => {
-            console.log('Posting to api/tracker error', err);
-          });
-        }
+      this.setState({
+        searching: true,
       })
+      const found = [];
+      cryptos.data.forEach(crypto => {
+        if (crypto.id == this.state.currencyId.toLowerCase()) {
+          found.push(crypto.id);
+        }
+      });
+      if (found.length) {
+        axios({
+          method: 'POST',
+          url: '/api/tracker/add',
+          data: {
+            user_id: this.state.profile.sub,
+            currency_id: this.state.currencyId,
+            investment: this.state.investment,
+          },
+        })
+        .then(currency => {
+          this.setState({
+            searching: false,
+            fireRedirect: true,
+          })
+        })
+        .catch(err => {
+          console.log('Posting to api/tracker error', err);
+        });
+      }
+      else {
+        alert(`Sorry, we couldn't find ${this.state.currencyId}, please try something else`);
+        this.setState({
+          searching: false
+        });
+      };
     })
     .catch(err => {
       console.log("finding the currency error", err);
-    })
-  }
+    });
+  };
   renderForm() {
     return (
       <div className="add-form">
@@ -88,7 +99,7 @@ class TrackerAdd extends Component {
           <h3>Add a currency!</h3>
           <p>We get our cryptocurrency data from the amazing people at Coin Market Cap. If you're having trouble finding a currency, please check and make sure you're spelling it correctly.</p>
         </Jumbotron>
-        {this.notTrue ? <p>Sorry, we couldn't find that. Please try something else</p> : ""}
+        {this.notFound ? <p>Sorry, we couldn't find that. Please try something else</p> : ""}
         <form onSubmit={this.handleSubmit}>
           <ControlLabel>Currency: </ControlLabel>
           <FormControl
@@ -124,8 +135,8 @@ class TrackerAdd extends Component {
          <div>
           <Button href="/tracker" bsStyle="danger">Back to Tracker</Button>
           {this.state.searching ? <p>Searching... Sorry for the wait</p> : <div>{this.renderForm()}</div>}
-            {this.state.fireRedirect ? <Redirect push to="/tracker" /> : ''}
-          </div>
+          {this.state.fireRedirect ? <Redirect push to="/tracker" /> : '' }
+        </div>
          )
         }
         {

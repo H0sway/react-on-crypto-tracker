@@ -110,6 +110,10 @@ table tbody:hover {
   margin-left: 15px;
 }
 
+.TrackerAdd {
+  margin-bottom: 3em;
+}
+
 .TrackerAdd .jumbotron {
   background-color: #262626;
 }
