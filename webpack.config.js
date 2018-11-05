@@ -1,28 +1,40 @@
+// Import dependencies
 const path = require('path');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const config = {
-    entry: './src/index.js',
+  entry: './src/index.js',
     output: {
         path: path.resolve(__dirname,'build'),
         filename: 'bundle.js',
     },
-    module: {
-        rules: [
-            {
-                use: 'babel-loader',
-                test:/\.js$/
-            },
-            {
-                use: ExtractTextWebpackPlugin.extract({
-                    use: 'css-loader'
-                }),
-                test: /\.css$/
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
       }
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin('style.css')
+    new HtmlWebPackPlugin({
+      template: "./index.html",
+      filename: "./index.html"
+    }),
+    new ExtractTextPlugin({filename: 'style.css'})
   ]
 };
+
 module.exports = config;
