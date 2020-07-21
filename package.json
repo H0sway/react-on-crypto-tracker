@@ -24,7 +24,7 @@
   "dependencies": {
     "ajv": "^6.8.1",
     "auth0": "^2.14.0",
-    "auth0-js": "^9.10.0",
+    "auth0-js": "^9.13.2",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
