@@ -41,7 +41,7 @@
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^1.0.0",
     "history": "^4.7.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "jwks-rsa": "^1.4.0",
     "jwt-decode": "^2.2.0",
     "pg-promise": "^8.5.5",
