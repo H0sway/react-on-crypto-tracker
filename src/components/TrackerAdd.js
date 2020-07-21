@@ -49,15 +49,16 @@ class TrackerAdd extends Component {
     e.preventDefault();
     axios({
       method: 'GET',
-      url: `https://api.coinmarketcap.com/v1/ticker/?limit=0`,
+      url: '/api/currencydata/all'
     })
     .then(cryptos => {
       this.setState({
         searching: true,
       })
       const found = [];
-      cryptos.data.forEach(crypto => {
-        if (crypto.id == this.state.currencyId.toLowerCase()) {
+      cryptos.data.data.forEach(crypto => {
+        const input = this.state.currencyId.toLowerCase();
+        if (crypto.name == input || crypto.slug == input) {
           found.push(crypto.id);
         }
       });
@@ -67,7 +68,8 @@ class TrackerAdd extends Component {
           url: '/api/tracker/add',
           data: {
             user_id: this.state.profile.sub,
-            currency_id: this.state.currencyId,
+            currency_name: this.state.currencyId,
+            currency_id: found[0],
             investment: this.state.investment,
           },
         })

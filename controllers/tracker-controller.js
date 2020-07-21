@@ -48,6 +48,7 @@ trackerController.update = (req,res) => {
 trackerController.add = (req,res) => {
   Currency.create({
     user_id: req.body.user_id,
+    currency_name: req.body.currency_name,
     currency_id: req.body.currency_id,
     investment: req.body.investment
   })
