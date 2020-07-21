@@ -12,7 +12,6 @@ export default class TrackerTable extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props.currency.currency_id);
     axios({
       method: 'POST',
       url: `/api/currencydata/${this.props.currency.currency_id}`,
@@ -21,12 +20,12 @@ export default class TrackerTable extends Component {
       }
     })
     .then(data => {
-      console.log(data);
+      console.log(data.data.data[1]);
       this.setState({
         dataLoaded: true,
-        currency: data.data.data[0],
+        currency: data.data.data[1],
       })
-      console.log(this.state.currency);
+      console.log('THIS IS CURRENCY', this.state.currency);
     })
     .catch(err => {
       console.log('TrackerTable error', err);
@@ -34,15 +33,13 @@ export default class TrackerTable extends Component {
   }
   renderTableBody() {
     if (this.state.dataLoaded) {
-      const priceUsd = parseFloat(this.state.currency.price_usd).toFixed(8);
-      const priceBtc = parseFloat(this.state.currency.price_btc).toFixed(8);
-      const marketCap = parseFloat(this.state.currency.market_cap_usd).toFixed(0);
+      const priceUsd = parseFloat(this.state.currency.quote.USD.price).toFixed(8);
+      const marketCap = parseFloat(this.state.currency.quote.USD.market_cap).toFixed(0);
       const investValue = priceUsd * this.props.currency.investment;
       return (
         <ListGroup>
           <ListGroupItem><strong>Name:</strong> {this.state.currency.name} </ListGroupItem>
           <ListGroupItem><strong>Value (USD):</strong> ${priceUsd} </ListGroupItem>
-          <ListGroupItem><strong>Value (BTC):</strong> <Glyphicon glyph="bitcoin" />{priceBtc} </ListGroupItem>
           <ListGroupItem><strong>Market Cap:</strong> ${marketCap} </ListGroupItem>
           <ListGroupItem><strong>Percent Change (7 Days):</strong> {this.state.currency.percent_change_7d}% </ListGroupItem>
           <ListGroupItem><strong>Investment Amount:</strong> {this.props.currency.investment} </ListGroupItem>
