@@ -22,7 +22,7 @@
   "author": "Joshua K. Russell",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^6.8.1",
+    "ajv": "^6.12.3",
     "auth0": "^2.14.0",
     "auth0-js": "^9.10.0",
     "axios": "^0.18.0",
